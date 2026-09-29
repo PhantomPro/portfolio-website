@@ -44,7 +44,7 @@ interface FilterOption {
                   <!-- Image -->
                   <div class="featured-image">
                     @if (project.image) {
-                      <img [src]="project.image" [alt]="project.title + ' UI preview'" class="project-img" loading="lazy" />
+                      <img [src]="getImageUrl(project.image)" [alt]="project.title + ' UI preview'" class="project-img" loading="lazy" />
                     } @else {
                       <div class="image-placeholder" [style.background]="getProjectGradient(i)">
                         <span class="image-icon">{{ getProjectEmoji(project.category) }}</span>
@@ -140,7 +140,7 @@ interface FilterOption {
                 >
                   <div class="project-card-image">
                     @if (project.image) {
-                      <img [src]="project.image" [alt]="project.title + ' thumbnail'" class="card-thumb-img" loading="lazy" />
+                      <img [src]="getImageUrl(project.image)" [alt]="project.title + ' thumbnail'" class="card-thumb-img" loading="lazy" />
                     } @else {
                       <div class="card-placeholder" [style.background]="getProjectGradient(i)">
                         <span class="card-emoji">{{ getProjectEmoji(project.category) }}</span>
@@ -547,6 +547,11 @@ export class ProjectsComponent implements OnInit, AfterViewInit {
     } else {
       this.filteredOtherProjects.set(this.otherProjects().filter((p) => p.category === filter));
     }
+  }
+
+  getImageUrl(image?: string): string {
+    if (!image) return '';
+    return image.startsWith('/') ? image.substring(1) : image;
   }
 
   openProject(project: Project): void {

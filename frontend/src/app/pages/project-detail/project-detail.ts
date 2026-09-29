@@ -56,7 +56,7 @@ import { Project } from '../../core/models/project.model';
         @if (project()!.image) {
           <div class="container detail-hero-media">
             <div class="media-frame">
-              <img [src]="project()!.image" [alt]="project()!.title + ' interface showcase'" class="detail-preview-img" />
+              <img [src]="getImageUrl(project()!.image)" [alt]="project()!.title + ' interface showcase'" class="detail-preview-img" />
             </div>
           </div>
         }
@@ -470,6 +470,11 @@ export class ProjectDetailComponent implements OnInit {
       },
       error: () => { this.loading.set(false); },
     });
+  }
+
+  getImageUrl(image?: string): string {
+    if (!image) return '';
+    return image.startsWith('/') ? image.substring(1) : image;
   }
 
   getCategoryLabel(category: string): string {

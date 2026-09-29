@@ -196,7 +196,7 @@ export const FALLBACK_PROJECTS: Project[] = [
     ],
     results:
       'Reduced redundant API payload overhead by 35% using GraphQL, streamlined simulated claim submission cycles by 50%, and eliminated over-fetching across all core dashboard views.',
-    image: '/images/projects/insurance.jpg',
+    image: 'images/projects/insurance.jpg',
     githubUrl: 'https://github.com/PhantomPro/insurance-management-Capstone',
     liveUrl: '',
     featured: true,
@@ -235,7 +235,7 @@ export const FALLBACK_PROJECTS: Project[] = [
     ],
     results:
       'Reduced API response times by 25%, enhanced load times by 35%, and decreased user-reported bugs by 40% through comprehensive cross-browser validation.',
-    image: '/images/projects/ai-image-gen.jpg',
+    image: 'images/projects/ai-image-gen.jpg',
     githubUrl: 'https://github.com/PhantomPro/AI-Image-Generator',
     liveUrl: '',
     featured: true,
@@ -274,7 +274,7 @@ export const FALLBACK_PROJECTS: Project[] = [
     ],
     results:
       'Reduced data integration time by 25%, decreased data synchronization issues by 30%, and improved page load times by 20% compared to baseline CSR applications.',
-    image: '/images/projects/carbon-gallery.jpg',
+    image: 'images/projects/carbon-gallery.jpg',
     githubUrl: 'https://github.com/PlabanKr/carbon-gallery-frontend',
     liveUrl: 'https://github.com/PlabanKr/carbon-gallery-backend',
     featured: false,
@@ -313,7 +313,7 @@ export const FALLBACK_PROJECTS: Project[] = [
     ],
     results:
       'Reduced data retrieval times by 20%, drastically accelerated frontend UI styling workflows, and delivered seamless preset saving.',
-    image: '/images/projects/project-graphite.jpg',
+    image: 'images/projects/project-graphite.jpg',
     githubUrl: 'https://github.com/PlabanKr/Project-Graphite',
     liveUrl: 'https://www.figma.com/file/U87WqMDAYL294JiX9IqzKe/graphite?node-id=0%3A1&t=61v5uO4xgxBLaW2i-1',
     featured: false,
@@ -352,7 +352,7 @@ export const FALLBACK_PROJECTS: Project[] = [
     ],
     results:
       'Delivered an interactive, zero-latency financial tracking tool providing instant visual insights with zero server latency and 100% offline functionality.',
-    image: '/images/projects/expense-tracker.jpg',
+    image: 'images/projects/expense-tracker.jpg',
     githubUrl: 'https://github.com/PhantomPro/expense-tracker-dashboard',
     liveUrl: '',
     featured: false,

@@ -71,11 +71,28 @@ type FormState = 'idle' | 'loading' | 'success' | 'error';
           <!-- Right: Form -->
           <div class="contact-form-wrap">
             @if (formState() === 'success') {
-              <div class="form-success" role="status" aria-live="polite">
-                <div class="success-icon" aria-hidden="true">✅</div>
-                <h3>Message sent!</h3>
-                <p>Thanks for reaching out. I'll get back to you within 24 hours.</p>
-                <button class="btn btn-secondary" (click)="resetForm()" id="contact-send-another">Send another message</button>
+              <div class="form-success glass" role="status" aria-live="polite">
+                <div class="success-icon" aria-hidden="true">🚀</div>
+                <h3>Message Ready & Queued!</h3>
+                <p>Your message to <strong>basutanmay.007@gmail.com</strong> has been initiated.</p>
+
+                <div class="success-actions">
+                  <a [href]="gmailUrl()" target="_blank" rel="noopener noreferrer" class="btn btn-primary success-btn" id="contact-send-gmail">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M24 5.457v13.909c0 .904-.732 1.636-1.636 1.636h-3.819V11.73L12 16.64l-6.545-4.91v9.272H1.636A1.636 1.636 0 0 1 0 19.366V5.457c0-2.023 2.309-3.178 3.927-1.964L5.455 4.64 12 9.548l6.545-4.91 1.528-1.145C21.69 2.28 24 3.434 24 5.457z"/></svg>
+                    Send with Gmail Web
+                  </a>
+                  <a [href]="mailtoUrl()" class="btn btn-secondary success-btn" id="contact-send-mailapp">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>
+                    Send with Mail App
+                  </a>
+                  <button type="button" class="btn btn-outline success-btn" (click)="copyMessage()" id="contact-copy-msg">
+                    {{ copied() ? '✓ Copied to Clipboard!' : '📋 Copy Full Message' }}
+                  </button>
+                </div>
+
+                <div class="reset-wrap">
+                  <button class="btn-text" (click)="resetForm()" id="contact-send-another">← Send another message</button>
+                </div>
               </div>
             } @else {
               <form
@@ -389,6 +406,48 @@ type FormState = 'idle' | 'loading' | 'success' | 'error';
       h3 { font-size: 1.5rem; margin-bottom: 0.5rem; color: var(--text-primary); }
       p { color: var(--text-secondary); margin-bottom: 1.5rem; }
     }
+
+    .success-actions {
+      display: flex;
+      flex-direction: column;
+      gap: 0.75rem;
+      max-width: 380px;
+      margin: 1.5rem auto;
+    }
+    .success-btn {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 0.6rem;
+      padding: 0.85rem 1.25rem;
+      border-radius: 12px;
+      font-weight: 600;
+      font-size: 0.95rem;
+      text-decoration: none;
+      transition: all 0.25s ease;
+    }
+    .reset-wrap {
+      margin-top: 1.5rem;
+    }
+    .btn-text {
+      background: none;
+      border: none;
+      color: var(--accent-primary);
+      cursor: pointer;
+      font-size: 0.9rem;
+      font-weight: 500;
+      text-decoration: underline;
+    }
+    .btn-outline {
+      background: rgba(255,255,255,0.04);
+      border: 1px solid var(--border-subtle);
+      color: var(--text-primary);
+      cursor: pointer;
+    }
+    .btn-outline:hover {
+      background: rgba(255,255,255,0.08);
+      border-color: var(--border-accent);
+    }
   `],
 })
 export class ContactComponent {
@@ -396,6 +455,8 @@ export class ContactComponent {
   private fb = inject(FormBuilder);
 
   readonly formState = signal<FormState>('idle');
+  readonly copied = signal(false);
+  readonly submittedData = signal<{ name: string; email: string; subject: string; message: string } | null>(null);
 
   contactForm: FormGroup = this.fb.group({
     name: ['', [Validators.required, Validators.minLength(2)]],
@@ -403,6 +464,32 @@ export class ContactComponent {
     subject: [''],
     message: ['', [Validators.required, Validators.minLength(10)]],
   });
+
+  mailtoUrl(): string {
+    const data = this.submittedData();
+    if (!data) return 'mailto:basutanmay.007@gmail.com';
+    const sub = encodeURIComponent(data.subject || `Portfolio Inquiry from ${data.name}`);
+    const body = encodeURIComponent(`Hi Tanmay,\n\n${data.message}\n\nFrom: ${data.name} (${data.email})`);
+    return `mailto:basutanmay.007@gmail.com?subject=${sub}&body=${body}`;
+  }
+
+  gmailUrl(): string {
+    const data = this.submittedData();
+    if (!data) return 'https://mail.google.com/mail/?view=cm&fs=1&to=basutanmay.007@gmail.com';
+    const sub = encodeURIComponent(data.subject || `Portfolio Inquiry from ${data.name}`);
+    const body = encodeURIComponent(`Hi Tanmay,\n\n${data.message}\n\nFrom: ${data.name} (${data.email})`);
+    return `https://mail.google.com/mail/?view=cm&fs=1&to=basutanmay.007@gmail.com&su=${sub}&body=${body}`;
+  }
+
+  copyMessage(): void {
+    const data = this.submittedData();
+    if (!data) return;
+    const text = `To: basutanmay.007@gmail.com\nSubject: ${data.subject || 'Portfolio Inquiry'}\n\n${data.message}\n\nFrom: ${data.name} (${data.email})`;
+    navigator.clipboard.writeText(text).then(() => {
+      this.copied.set(true);
+      setTimeout(() => this.copied.set(false), 3000);
+    });
+  }
 
   isFieldInvalid(field: string): boolean {
     const control = this.contactForm.get(field);
@@ -415,22 +502,35 @@ export class ContactComponent {
       return;
     }
 
+    const formValues = {
+      name: this.contactForm.value.name,
+      email: this.contactForm.value.email,
+      subject: this.contactForm.value.subject || '',
+      message: this.contactForm.value.message,
+    };
+    this.submittedData.set(formValues);
+
     this.formState.set('loading');
 
-    this.portfolioService.submitContact(this.contactForm.value).subscribe({
-      next: (res) => {
-        if (res.success) {
-          this.formState.set('success');
-        } else {
-          this.formState.set('error');
-        }
+    this.portfolioService.submitContact(formValues).subscribe({
+      next: () => {
+        this.formState.set('success');
+        try {
+          window.location.href = this.mailtoUrl();
+        } catch (_) {}
       },
-      error: () => { this.formState.set('error'); },
+      error: () => {
+        this.formState.set('success');
+        try {
+          window.location.href = this.mailtoUrl();
+        } catch (_) {}
+      },
     });
   }
 
   resetForm(): void {
     this.contactForm.reset();
+    this.submittedData.set(null);
     this.formState.set('idle');
   }
 }

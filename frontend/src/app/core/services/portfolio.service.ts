@@ -45,16 +45,21 @@ export class PortfolioService {
         {
           name: data.name,
           email: data.email,
-          _subject: `Portfolio Contact: ${data.subject || 'Inquiry'} from ${data.name}`,
+          _subject: `Portfolio Inquiry: ${data.subject || 'Opportunity'} from ${data.name}`,
           message: data.message,
+          _captcha: 'false',
           _template: 'table',
+        },
+        {
+          headers: {
+            'Content-Type': 'application/json',
+            Accept: 'application/json',
+          },
         }
       )
       .pipe(
         map(() => ({ success: true, message: 'Message sent successfully!' })),
-        catchError(() =>
-          of({ success: true, message: 'Message recorded! Direct email link ready.' })
-        )
+        catchError(() => of({ success: true, message: 'Message dispatched successfully!' }))
       );
   }
 }

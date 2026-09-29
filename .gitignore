@@ -1,0 +1,45 @@
+# Dependencies
+node_modules/
+*/node_modules/
+
+# Production builds
+dist/
+frontend/dist/
+backend/dist/
+out-tsc/
+bazel-out/
+tmp/
+
+# Angular
+.angular/
+frontend/.angular/
+
+# Environment files
+.env
+.env.*
+!.env.example
+backend/.env
+
+# Logs
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+*.log
+
+# Operating System
+.DS_Store
+Thumbs.db
+
+# IDEs and Editors
+.idea/
+.vscode/*
+!.vscode/settings.json
+!.vscode/tasks.json
+!.vscode/launch.json
+*.sublime-project
+*.sublime-workspace
+
+# Coverage and test artifacts
+coverage/
+__screenshots__/
+.nyc_output/

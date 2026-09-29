@@ -115,11 +115,17 @@ import { Skill, SkillGroup } from '../../../../core/models/skill.model';
     }
 
     .skills-grid {
-      display: grid;
-      grid-template-columns: repeat(auto-fill, minmax(140px, 1fr));
-      gap: 1rem;
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      align-items: stretch;
+      gap: 1.25rem;
+      max-width: 1060px;
+      margin: 0 auto;
 
-      @media (max-width: 600px) { grid-template-columns: repeat(auto-fill, minmax(100px, 1fr)); }
+      @media (max-width: 600px) {
+        gap: 0.75rem;
+      }
     }
 
     .skill-card {
@@ -130,12 +136,21 @@ import { Skill, SkillGroup } from '../../../../core/models/skill.model';
       justify-content: center;
       gap: 0.75rem;
       padding: 1.75rem 1rem;
+      width: 145px;
+      min-height: 150px;
       background: var(--bg-card);
       border: 1px solid var(--border-subtle);
       border-radius: 16px;
       cursor: default;
       overflow: hidden;
       transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+
+      @media (max-width: 600px) {
+        width: calc(33.333% - 0.5rem);
+        min-width: 95px;
+        min-height: 120px;
+        padding: 1rem 0.5rem;
+      }
 
       &:hover {
         border-color: var(--border-accent);

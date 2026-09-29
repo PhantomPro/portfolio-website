@@ -40,15 +40,15 @@ export class PortfolioService {
 
   submitContact(data: { name: string; email: string; subject?: string; message: string }): Observable<{ success: boolean; message: string }> {
     return this.http
-      .post<{ success: string | boolean; message: string }>(
-        'https://formsubmit.co/ajax/basutanmay.007@gmail.com',
+      .post<{ success: boolean; message: string }>(
+        'https://api.web3forms.com/submit',
         {
+          access_key: '7a13fff8-fbed-4c54-b925-9ea1d644b22a',
           name: data.name,
           email: data.email,
-          _subject: `Portfolio Inquiry: ${data.subject || 'Opportunity'} from ${data.name}`,
+          subject: data.subject || `Portfolio Inquiry from ${data.name}`,
           message: data.message,
-          _captcha: 'false',
-          _template: 'table',
+          from_name: `${data.name} (Portfolio)`,
         },
         {
           headers: {
@@ -58,8 +58,8 @@ export class PortfolioService {
         }
       )
       .pipe(
-        map(() => ({ success: true, message: 'Message sent successfully!' })),
-        catchError(() => of({ success: true, message: 'Message dispatched successfully!' }))
+        map((res) => ({ success: res.success, message: res.message || 'Message sent successfully!' })),
+        catchError(() => of({ success: false, message: 'Failed to send message.' }))
       );
   }
 }

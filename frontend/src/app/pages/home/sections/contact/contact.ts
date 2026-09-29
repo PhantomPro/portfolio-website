@@ -472,11 +472,15 @@ export class ContactComponent {
     this.formState.set('loading');
 
     this.portfolioService.submitContact(formValues).subscribe({
-      next: () => {
-        this.formState.set('success');
+      next: (res) => {
+        if (res.success) {
+          this.formState.set('success');
+        } else {
+          this.formState.set('error');
+        }
       },
       error: () => {
-        this.formState.set('success');
+        this.formState.set('error');
       },
     });
   }

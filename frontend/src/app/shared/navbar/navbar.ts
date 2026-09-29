@@ -109,11 +109,12 @@ interface NavLink {
 
           <!-- Resume -->
           <a
-            href="#contact"
-            (click)="scrollToSection($event, '#contact')"
+            [href]="resumeUrl"
+            target="_blank"
+            rel="noopener noreferrer"
             class="btn btn-secondary btn-sm resume-btn"
-            aria-label="Contact & Resume"
-          >Get In Touch</a>
+            aria-label="View Resume (PDF)"
+          >Resume ↗</a>
 
           <!-- Mobile hamburger -->
           <button
@@ -144,8 +145,14 @@ interface NavLink {
             </li>
           }
           <li class="mobile-resume">
-            <a href="#contact" class="btn btn-primary" (click)="scrollToSection($event, '#contact'); closeMenu()">
-              Get In Touch
+            <a
+              [href]="resumeUrl"
+              target="_blank"
+              rel="noopener noreferrer"
+              class="btn btn-primary"
+              (click)="closeMenu()"
+            >
+              View Resume ↗
             </a>
           </li>
         </ul>
@@ -385,6 +392,7 @@ export class NavbarComponent implements OnInit, OnDestroy {
   readonly isScrolled = signal(false);
   readonly menuOpen = signal(false);
   readonly activeSection = signal('home');
+  readonly resumeUrl = 'resume.pdf';
 
   readonly navLinks: NavLink[] = [
     { label: 'Home', href: '#home' },

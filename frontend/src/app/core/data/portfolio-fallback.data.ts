@@ -16,7 +16,7 @@ export const FALLBACK_PROFILE: Profile = {
   location: 'Hyderabad, India',
   linkedin: 'https://www.linkedin.com/in/tanmay-basu-9310b01a1/',
   github: 'https://github.com/PhantomPro',
-  resumeUrl: '#',
+  resumeUrl: 'resume.pdf',
   education: [
     {
       degree: 'Bachelor of Technology in Computer Science and Engineering',
@@ -39,7 +39,7 @@ export const FALLBACK_PROFILE: Profile = {
     'Competitive Programming',
   ],
   currentRole: 'Full Stack Developer @ Ascendion',
-  yearsOfExperience: 1,
+  yearsOfExperience: 2,
 };
 
 export const FALLBACK_SKILLS: Skill[] = [

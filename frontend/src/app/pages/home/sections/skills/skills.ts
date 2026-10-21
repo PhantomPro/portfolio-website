@@ -2,6 +2,7 @@ import { Component, OnInit, AfterViewInit, signal, inject } from '@angular/core'
 import { CommonModule } from '@angular/common';
 import { PortfolioService } from '../../../../core/services/portfolio.service';
 import { Skill, SkillGroup } from '../../../../core/models/skill.model';
+import { SKILL_ICONS_MAP, SVG_LLM_APPS, SVG_REST_APIS } from './skill-icons.data';
 
 @Component({
   selector: 'app-skills',
@@ -164,17 +165,28 @@ import { Skill, SkillGroup } from '../../../../core/models/skill.model';
     }
 
     .skill-icon-wrap {
-      width: 52px;
-      height: 52px;
+      width: 58px;
+      height: 58px;
       display: flex;
       align-items: center;
       justify-content: center;
+      border-radius: 14px;
+      background: rgba(124, 111, 247, 0.08);
+      border: 1px solid rgba(124, 111, 247, 0.16);
+      transition: all 0.3s ease;
+    }
+
+    .skill-card:hover .skill-icon-wrap {
+      background: rgba(124, 111, 247, 0.16);
+      border-color: rgba(34, 211, 238, 0.4);
+      box-shadow: 0 0 20px rgba(124, 111, 247, 0.25);
     }
 
     .skill-icon {
       width: 44px;
       height: 44px;
       object-fit: contain;
+      filter: drop-shadow(0 2px 8px rgba(0, 0, 0, 0.3));
       transition: transform 0.3s cubic-bezier(0.4, 0, 0.2, 1);
     }
 
@@ -268,32 +280,18 @@ export class SkillsComponent implements OnInit, AfterViewInit {
   }
 
   getSkillIcon(skill: Skill): string {
-    const iconMap: { [key: string]: string } = {
-      angular: 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/angularjs/angularjs-original.svg',
-      react: 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/react/react-original.svg',
-      typescript: 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/typescript/typescript-original.svg',
-      javascript: 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/javascript/javascript-original.svg',
-      html5: 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/html5/html5-original.svg',
-      css3: 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/css3/css3-original.svg',
-      tailwind: 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/tailwindcss/tailwindcss-plain.svg',
-      nodejs: 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/nodejs/nodejs-original.svg',
-      express: 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/express/express-original.svg',
-      fastapi: 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/fastapi/fastapi-original.svg',
-      mongodb: 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/mongodb/mongodb-original.svg',
-      postgresql: 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/postgresql/postgresql-original.svg',
-      git: 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/git/git-original.svg',
-      github: 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/github/github-original.svg',
-      docker: 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/docker/docker-original.svg',
-      vscode: 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/vscode/vscode-original.svg',
-      python: 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/python/python-original.svg',
-      openai: 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/networkx/networkx-original.svg',
-    };
-    const key = skill.icon?.toLowerCase() || skill.name.toLowerCase().replace(/[^a-z]/g, '');
-    return iconMap[key] || `https://ui-avatars.com/api/?name=${encodeURIComponent(skill.name)}&background=7C6FF7&color=fff&size=64&bold=true`;
+    const iconKey = (skill.icon || '').toLowerCase();
+    const nameKey = skill.name.toLowerCase().replace(/[^a-z0-9]/g, '');
+
+    return (
+      SKILL_ICONS_MAP[iconKey] ||
+      SKILL_ICONS_MAP[nameKey] ||
+      (skill.category === 'ai' ? SVG_LLM_APPS : SVG_REST_APIS)
+    );
   }
 
   handleIconError(event: Event, skill: Skill): void {
     const img = event.target as HTMLImageElement;
-    img.src = `https://ui-avatars.com/api/?name=${encodeURIComponent(skill.name)}&background=7C6FF7&color=fff&size=64&bold=true`;
+    img.src = skill.category === 'ai' ? SVG_LLM_APPS : SVG_REST_APIS;
   }
 }

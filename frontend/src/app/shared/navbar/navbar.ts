@@ -413,11 +413,12 @@ export class NavbarComponent implements OnInit, OnDestroy {
     { label: 'Skills', href: '#skills' },
     { label: 'Experience', href: '#experience' },
     { label: 'Projects', href: '#projects' },
+    { label: 'AI Assistant', href: '#ai-assistant' },
     { label: 'Achievements', href: '#achievements' },
     { label: 'Contact', href: '#contact' },
   ];
 
-  private sectionIds = ['home', 'about', 'skills', 'experience', 'projects', 'achievements', 'contact'];
+  private sectionIds = ['home', 'about', 'skills', 'experience', 'projects', 'ai-assistant', 'achievements', 'contact'];
 
   ngOnInit(): void {
     // Initial active section calculation

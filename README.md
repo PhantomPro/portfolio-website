@@ -15,6 +15,12 @@ A modern, recruiter-focused personal portfolio website featuring a **Cybernetic 
   - 🌙 **Classic Dark Mode**: Minimalist midnight palette for classic developer aesthetics.
   - ☀️ **Porcelain Light Mode**: Refined high-contrast slate porcelain with dark IDE terminal and blueprint grid.
 - **Whole-Page Neural Mesh & Cyber Grid**: Fixed background with proximity synapse connections, interactive cursor glow, and Retina/high-DPI DPR scaling.
+- **AI Command Center (Google Gemini Free Tier)**:
+  - Powered by the official Google GenAI SDK (`@google/genai`) using `gemini-2.5-flash` (with `gemini-1.5-flash` resilience fallback).
+  - Grounded in Tanmay's verified Ascendion engineering experience, VS Code AI coding plugin, projects, and skills.
+  - Interactive suggested prompts, Enter-to-send, typing indicators, quota error handling, and direct deep-links into portfolio sections.
+  - Interactive Neural Universe integration: click any project or technology node across the portfolio to ask the AI assistant for architectural deep-dives.
+  - Zero-credentials exposed: All Gemini requests are executed server-side.
 - **Enterprise Experience**: Showcases full-stack and AI engineering work at **Ascendion** (VS Code AI Plugin, Experience Studio 2.5 AAVA, Client Solutions).
 - **Featured Case Studies**:
   - **Insurance Management Application**: Enterprise RBAC, automated claims pipeline, Apollo GraphQL, and MongoDB.
@@ -31,12 +37,36 @@ A modern, recruiter-focused personal portfolio website featuring a **Cybernetic 
 
 | Layer | Technology |
 |---|---|
+| **AI Assistant** | Google Gemini API (`@google/genai`, `gemini-2.5-flash` Free Tier) |
 | **Frontend** | Angular 17+ (Standalone Components, Signals, Reactive Forms) |
 | **Styling** | Vanilla SCSS, CSS Custom Properties, Glassmorphism, Responsive Grid/Flexbox |
 | **Canvas** | Vanilla HTML5 2D Canvas with Proximity Synapse Algorithms & Battery Throttling |
-| **Backend** | Node.js, Express.js, TypeScript |
+| **Backend** | Node.js, Express.js, TypeScript, Serverless Function (`api/assistant.ts`) |
 | **Data Layer** | MongoDB, Mongoose, Resilient Offline Client Fallback |
 | **Deployment** | Vercel, GitHub Pages, Docker |
+
+---
+
+## 🤖 Google Gemini AI Setup
+
+1. **Obtain a Free Gemini API Key**:
+   - Visit [Google AI Studio](https://aistudio.google.com/apikey).
+   - Click **"Create API Key"** (free tier, no credit card required).
+
+2. **Configure Environment Variables**:
+   - In `backend/.env` (and root `.env` for serverless runtimes):
+     ```env
+     GEMINI_API_KEY=your_gemini_api_key_here
+     GEMINI_MODEL=gemini-2.5-flash
+     ```
+   - *Note: `GEMINI_API_KEY` is kept strictly on the server and is never exposed to frontend code, client builds, or Git commits.*
+
+3. **Deployment Architecture Note**:
+   - **GitHub Pages** is a static file host and cannot run server-side Node.js code.
+   - For live Gemini API execution, you can either:
+     - Run the Node backend locally (`cd backend && npm run dev`), or
+     - Deploy to **Vercel** or **Render** where the serverless endpoint (`api/assistant.ts` or `backend/src/app.ts`) executes server-side with your `GEMINI_API_KEY`.
+   - If deployed statically without a backend, the assistant gracefully falls back to its local grounded knowledge engine without breaking!
 
 ---
 

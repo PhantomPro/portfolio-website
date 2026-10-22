@@ -1,6 +1,7 @@
 import { Component, OnInit, AfterViewInit, signal, inject } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { PortfolioService } from '../../../../core/services/portfolio.service';
+import { AssistantService } from '../../../../core/services/assistant.service';
 import { Skill, SkillGroup } from '../../../../core/models/skill.model';
 import { SKILL_ICONS_MAP, SVG_LLM_APPS, SVG_REST_APIS } from './skill-icons.data';
 
@@ -46,7 +47,11 @@ import { SKILL_ICONS_MAP, SVG_LLM_APPS, SVG_REST_APIS } from './skill-icons.data
                   class="skill-card animate-on-scroll"
                   [class.in-view]="inView()"
                   [style.transition-delay]="(i * 0.05) + 's'"
-                  [attr.aria-label]="skill.name"
+                  [attr.aria-label]="skill.name + ' - Click to ask AI about related projects'"
+                  role="button"
+                  tabindex="0"
+                  (click)="askAiAboutSkill(skill.name)"
+                  (keydown.enter)="askAiAboutSkill(skill.name)"
                 >
                   <div class="skill-icon-wrap">
                     <img
@@ -58,6 +63,7 @@ import { SKILL_ICONS_MAP, SVG_LLM_APPS, SVG_REST_APIS } from './skill-icons.data
                     />
                   </div>
                   <div class="skill-name">{{ skill.name }}</div>
+                  <div class="skill-ai-pill">Ask AI ↗</div>
                   <div class="skill-glow" aria-hidden="true"></div>
                 </div>
               }
@@ -142,7 +148,7 @@ import { SKILL_ICONS_MAP, SVG_LLM_APPS, SVG_REST_APIS } from './skill-icons.data
       background: var(--bg-card);
       border: 1px solid var(--border-subtle);
       border-radius: 16px;
-      cursor: default;
+      cursor: pointer;
       overflow: hidden;
       transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
 
@@ -161,7 +167,18 @@ import { SKILL_ICONS_MAP, SVG_LLM_APPS, SVG_REST_APIS } from './skill-icons.data
         .skill-icon { transform: scale(1.15) rotate(-3deg); }
         .skill-glow { opacity: 1; }
         .skill-name { color: var(--accent-primary); }
+        .skill-ai-pill { opacity: 1; transform: translateY(0); }
       }
+    }
+
+    .skill-ai-pill {
+      font-size: 0.65rem;
+      font-weight: 700;
+      color: var(--accent-primary);
+      opacity: 0;
+      transform: translateY(4px);
+      transition: all 0.2s ease;
+      letter-spacing: 0.02em;
     }
 
     .skill-icon-wrap {
@@ -211,6 +228,7 @@ import { SKILL_ICONS_MAP, SVG_LLM_APPS, SVG_REST_APIS } from './skill-icons.data
 })
 export class SkillsComponent implements OnInit, AfterViewInit {
   private portfolioService = inject(PortfolioService);
+  private assistantService = inject(AssistantService);
 
   readonly activeCategory = signal<string>('ai');
   readonly skillGroups = signal<SkillGroup[]>([]);
@@ -293,5 +311,9 @@ export class SkillsComponent implements OnInit, AfterViewInit {
   handleIconError(event: Event, skill: Skill): void {
     const img = event.target as HTMLImageElement;
     img.src = skill.category === 'ai' ? SVG_LLM_APPS : SVG_REST_APIS;
+  }
+
+  askAiAboutSkill(skillName: string): void {
+    this.assistantService.askAboutSkill(skillName);
   }
 }

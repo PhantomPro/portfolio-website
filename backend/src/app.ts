@@ -12,6 +12,7 @@ import skillRoutes from './routes/skillRoutes';
 import achievementRoutes from './routes/achievementRoutes';
 import profileRoutes from './routes/profileRoutes';
 import contactRoutes from './routes/contactRoutes';
+import assistantRoutes from './routes/assistantRoutes';
 
 const app = express();
 
@@ -59,6 +60,7 @@ app.use('/api/skills', skillRoutes);
 app.use('/api/achievements', achievementRoutes);
 app.use('/api/profile', profileRoutes);
 app.use('/api/contact', contactLimiter, contactRoutes);
+app.use('/api/assistant', assistantRoutes);
 
 // Error handling
 app.use(notFound);

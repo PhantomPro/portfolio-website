@@ -2,6 +2,7 @@ import { Component, OnInit, AfterViewInit, signal, inject } from '@angular/core'
 import { CommonModule } from '@angular/common';
 import { Router } from '@angular/router';
 import { ProjectService } from '../../../../core/services/project.service';
+import { AssistantService } from '../../../../core/services/assistant.service';
 import { Project } from '../../../../core/models/project.model';
 
 interface FilterOption {
@@ -89,6 +90,15 @@ interface FilterOption {
                         (click)="openProject(project)"
                         [attr.aria-label]="'View case study for ' + project.title"
                       >Case Study →</button>
+                      <button
+                        class="btn btn-ghost btn-sm btn-ask-ai"
+                        (click)="$event.stopPropagation(); askAiAbout(project.title)"
+                        title="Ask AI about this project"
+                        aria-label="Ask AI about this project"
+                      >
+                        <svg xmlns="http://www.w3.org/2000/svg" width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 2v4M12 18v4M4.93 4.93l2.83 2.83M16.24 16.24l2.83 2.83M2 12h4M18 12h4M4.93 19.07l2.83-2.83M16.24 7.76l2.83-2.83"/><circle cx="12" cy="12" r="3"/></svg>
+                        Ask AI
+                      </button>
                     </div>
                   </div>
                 </div>
@@ -150,6 +160,15 @@ interface FilterOption {
                           Code
                         </a>
                       }
+                      <button
+                        class="card-link btn-card-ask-ai"
+                        (click)="$event.stopPropagation(); askAiAbout(project.title)"
+                        title="Ask AI about this project"
+                        aria-label="Ask AI about this project"
+                      >
+                        <svg xmlns="http://www.w3.org/2000/svg" width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 2v4M12 18v4M4.93 4.93l2.83 2.83M16.24 16.24l2.83 2.83M2 12h4M18 12h4M4.93 19.07l2.83-2.83M16.24 7.76l2.83-2.83"/><circle cx="12" cy="12" r="3"/></svg>
+                        Ask AI
+                      </button>
                     </div>
                   </div>
                 </div>
@@ -459,6 +478,29 @@ interface FilterOption {
       &:hover { color: var(--accent-primary); }
     }
 
+    .btn-ask-ai {
+      color: var(--accent-primary);
+      border: 1px solid var(--border-accent);
+      background: var(--accent-subtle);
+      &:hover {
+        background: var(--accent-primary);
+        color: #fff;
+        border-color: var(--accent-primary);
+      }
+    }
+
+    .btn-card-ask-ai {
+      background: none;
+      border: none;
+      padding: 0;
+      cursor: pointer;
+      font-family: inherit;
+      color: var(--accent-primary);
+      &:hover {
+        color: var(--cyan);
+      }
+    }
+
     /* Loading */
     .loading-state {
       text-align: center;
@@ -481,6 +523,7 @@ interface FilterOption {
 export class ProjectsComponent implements OnInit, AfterViewInit {
   private projectService = inject(ProjectService);
   private router = inject(Router);
+  private assistantService = inject(AssistantService);
 
   readonly featuredProjects = signal<Project[]>([]);
   readonly otherProjects = signal<Project[]>([]);
@@ -542,6 +585,10 @@ export class ProjectsComponent implements OnInit, AfterViewInit {
 
   openProject(project: Project): void {
     this.router.navigate(['/projects', project._id]);
+  }
+
+  askAiAbout(title: string): void {
+    this.assistantService.askAboutProject(title);
   }
 
   getProjectGradient(index: number): string {

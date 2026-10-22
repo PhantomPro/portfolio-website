@@ -12,4 +12,6 @@ export const config = {
   emailUser: process.env['EMAIL_USER'] || '',
   emailPass: process.env['EMAIL_PASS'] || '',
   adminEmail: process.env['ADMIN_EMAIL'] || '',
+  geminiApiKey: process.env['GEMINI_API_KEY'] || '',
+  geminiModel: process.env['GEMINI_MODEL'] || 'gemini-2.5-flash',
 };

@@ -74,7 +74,7 @@ export const FALLBACK_SKILLS: Skill[] = [
   { _id: 's_db3', name: 'MySQL', category: 'database', icon: 'mysql', order: 3 },
   // Tools
   { _id: 's_tl1', name: 'VS Code Extension API', category: 'tools', icon: 'vscode', order: 1 },
-  { _id: 's_tl2', name: 'Git & GitHub', category: 'tools', icon: 'github', order: 2 },
+  { _id: 's_tl2', name: 'Git & GitHub', category: 'tools', icon: 'gitgithub', order: 2 },
   { _id: 's_tl3', name: 'Postman', category: 'tools', icon: 'postman', order: 3 },
   { _id: 's_tl4', name: 'Vite', category: 'tools', icon: 'vite', order: 4 },
   { _id: 's_tl5', name: 'Jest', category: 'tools', icon: 'jest', order: 5 },

@@ -178,6 +178,83 @@ export const SVG_REST_APIS = encodeSvg(`
 </svg>
 `);
 
+/** Git: Official Orange Rhombus with White Branch Tree */
+export const SVG_GIT = encodeSvg(`
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 48 48" fill="none">
+  <defs>
+    <linearGradient id="gitStandaloneGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#F1502F"/>
+      <stop offset="100%" stop-color="#D9381E"/>
+    </linearGradient>
+    <filter id="gitStandaloneGlow" x="-20%" y="-20%" width="140%" height="140%">
+      <feDropShadow dx="0" dy="2" stdDeviation="3" flood-color="#F1502F" flood-opacity="0.35"/>
+    </filter>
+  </defs>
+  <g transform="rotate(45 24 24)" filter="url(#gitStandaloneGlow)">
+    <rect x="6" y="6" width="36" height="36" rx="8" fill="url(#gitStandaloneGrad)"/>
+    <line x1="16" y1="12" x2="16" y2="36" stroke="#FFFFFF" stroke-width="4.2" stroke-linecap="round"/>
+    <path d="M16 26C16 19 22 15 30 15" stroke="#FFFFFF" stroke-width="4.2" stroke-linecap="round" fill="none"/>
+    <circle cx="16" cy="36" r="4.2" fill="#FFFFFF"/>
+    <circle cx="16" cy="12" r="4.2" fill="#FFFFFF"/>
+    <circle cx="30" cy="15" r="4.2" fill="#FFFFFF"/>
+  </g>
+</svg>
+`);
+
+/** GitHub: High-Contrast White Invertocat with Cyan Accent Ring */
+export const SVG_GITHUB = encodeSvg(`
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 48 48" fill="none">
+  <defs>
+    <linearGradient id="ghStandaloneRing" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#38BDF8"/>
+      <stop offset="100%" stop-color="#818CF8"/>
+    </linearGradient>
+    <filter id="ghGlow" x="-20%" y="-20%" width="140%" height="140%">
+      <feDropShadow dx="0" dy="2" stdDeviation="3" flood-color="#38BDF8" flood-opacity="0.25"/>
+    </filter>
+  </defs>
+  <circle cx="24" cy="24" r="21" fill="#181717" stroke="url(#ghStandaloneRing)" stroke-width="2" filter="url(#ghGlow)"/>
+  <path fill="#FFFFFF" d="M12 .297c-6.63 0-12 5.373-12 12 0 5.303 3.438 9.8 8.205 11.385.6.113.82-.258.82-.577 0-.285-.01-1.04-.015-2.04-3.338.724-4.042-1.61-4.042-1.61C4.422 18.07 3.633 17.7 3.633 17.7c-1.087-.744.084-.729.084-.729 1.205.084 1.838 1.236 1.838 1.236 1.07 1.835 2.809 1.305 3.495.998.108-.776.417-1.305.76-1.605-2.665-.3-5.466-1.332-5.466-5.93 0-1.31.465-2.38 1.235-3.22-.135-.303-.54-1.523.105-3.176 0 0 1.005-.322 3.3 1.23.96-.267 1.98-.399 3-.405 1.02.006 2.04.138 3 .405 2.28-1.552 3.285-1.23 3.285-1.23.645 1.653.24 2.873.12 3.176.765.84 1.23 1.91 1.23 3.22 0 4.61-2.805 5.625-5.475 5.92.42.36.81 1.096.81 2.22 0 1.606-.015 2.896-.015 3.286 0 .315.21.69.825.57C20.565 22.092 24 17.592 24 12.297c0-6.627-5.373-12-12-12" transform="translate(6, 6) scale(1.5)"/>
+</svg>
+`);
+
+/** Git & GitHub: Dual Badge combining Git Orange Rhombus + GitHub White Invertocat */
+export const SVG_GIT_GITHUB = encodeSvg(`
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 48 48" fill="none">
+  <defs>
+    <linearGradient id="gitGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#F1502F"/>
+      <stop offset="100%" stop-color="#D9381E"/>
+    </linearGradient>
+    <linearGradient id="ghRing" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#38BDF8"/>
+      <stop offset="100%" stop-color="#818CF8"/>
+    </linearGradient>
+    <filter id="glowGit" x="-20%" y="-20%" width="140%" height="140%">
+      <feDropShadow dx="0" dy="2" stdDeviation="2" flood-color="#F1502F" flood-opacity="0.35"/>
+    </filter>
+  </defs>
+
+  <!-- Git Badge (Top-Left) -->
+  <g transform="translate(2.5, 2.5)" filter="url(#glowGit)">
+    <g transform="rotate(45 12 12)">
+      <rect x="3" y="3" width="18" height="18" rx="4" fill="url(#gitGrad)"/>
+      <line x1="8.5" y1="6" x2="8.5" y2="18" stroke="#FFFFFF" stroke-width="2.2" stroke-linecap="round"/>
+      <path d="M8.5 13C8.5 9.5 11.5 7.5 15.5 7.5" stroke="#FFFFFF" stroke-width="2.2" stroke-linecap="round" fill="none"/>
+      <circle cx="8.5" cy="18" r="2.2" fill="#FFFFFF"/>
+      <circle cx="8.5" cy="6" r="2.2" fill="#FFFFFF"/>
+      <circle cx="15.5" cy="7.5" r="2.2" fill="#FFFFFF"/>
+    </g>
+  </g>
+
+  <!-- GitHub Invertocat Badge (Bottom-Right) -->
+  <g transform="translate(21, 21)">
+    <circle cx="12" cy="12" r="12" fill="#181717" stroke="url(#ghRing)" stroke-width="1.5"/>
+    <path fill="#FFFFFF" d="M12 .297c-6.63 0-12 5.373-12 12 0 5.303 3.438 9.8 8.205 11.385.6.113.82-.258.82-.577 0-.285-.01-1.04-.015-2.04-3.338.724-4.042-1.61-4.042-1.61C4.422 18.07 3.633 17.7 3.633 17.7c-1.087-.744.084-.729.084-.729 1.205.084 1.838 1.236 1.838 1.236 1.07 1.835 2.809 1.305 3.495.998.108-.776.417-1.305.76-1.605-2.665-.3-5.466-1.332-5.466-5.93 0-1.31.465-2.38 1.235-3.22-.135-.303-.54-1.523.105-3.176 0 0 1.005-.322 3.3 1.23.96-.267 1.98-.399 3-.405 1.02.006 2.04.138 3 .405 2.28-1.552 3.285-1.23 3.285-1.23.645 1.653.24 2.873.12 3.176.765.84 1.23 1.91 1.23 3.22 0 4.61-2.805 5.625-5.475 5.92.42.36.81 1.096.81 2.22 0 1.606-.015 2.896-.015 3.286 0 .315.21.69.825.57C20.565 22.092 24 17.592 24 12.297c0-6.627-5.373-12-12-12" transform="translate(1.2, 1.2) scale(0.9)"/>
+  </g>
+</svg>
+`);
+
 // ─── MASTER ICON MAPPER ─────────────────────────────────────────────────────
 
 export const SKILL_ICONS_MAP: { [key: string]: string } = {
@@ -232,9 +309,9 @@ export const SKILL_ICONS_MAP: { [key: string]: string } = {
   // Tools & DevOps
   vscode: 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/vscode/vscode-original.svg',
   vscodeextensionapi: 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/vscode/vscode-original.svg',
-  git: 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/git/git-original.svg',
-  github: 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/github/github-original.svg',
-  gitgithub: 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/github/github-original.svg',
+  git: SVG_GIT,
+  github: SVG_GITHUB,
+  gitgithub: SVG_GIT_GITHUB,
   postman: 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/postman/postman-original.svg',
   vite: 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/vitejs/vitejs-original.svg',
   jest: 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/jest/jest-plain.svg',

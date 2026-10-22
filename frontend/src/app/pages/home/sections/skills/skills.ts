@@ -280,12 +280,12 @@ export class SkillsComponent implements OnInit, AfterViewInit {
   }
 
   getSkillIcon(skill: Skill): string {
-    const iconKey = (skill.icon || '').toLowerCase();
     const nameKey = skill.name.toLowerCase().replace(/[^a-z0-9]/g, '');
+    const iconKey = (skill.icon || '').toLowerCase();
 
     return (
-      SKILL_ICONS_MAP[iconKey] ||
       SKILL_ICONS_MAP[nameKey] ||
+      SKILL_ICONS_MAP[iconKey] ||
       (skill.category === 'ai' ? SVG_LLM_APPS : SVG_REST_APIS)
     );
   }

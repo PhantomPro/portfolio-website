@@ -59,10 +59,12 @@ interface NavLink {
             [class.active]="assistantService.isOpen()"
             (click)="assistantService.toggle()"
             aria-label="Ask Tanmay AI Assistant"
-            title="Ask Tanmay's AI Assistant"
           >
-            <img src="assets/chatbot.png" alt="Tanmay AI" class="nav-bot-img" />
-            <span class="ai-live-pulse" title="Gemini Online"></span>
+            <div class="bot-img-wrap">
+              <img src="assets/chatbot.png" alt="Tanmay AI" class="nav-bot-img" />
+            </div>
+            <span class="ai-live-pulse" aria-hidden="true"></span>
+            <span class="nav-tooltip" role="tooltip">Ask Tanmay AI</span>
           </button>
 
           <!-- Theme toggle -->
@@ -70,7 +72,6 @@ interface NavLink {
             class="icon-btn theme-toggle-btn"
             (click)="toggleTheme()"
             [attr.aria-label]="getThemeTitle()"
-            [title]="getThemeTitle()"
           >
             @if (themeService.currentTheme() === 'dark') {
               <!-- Moon Icon -->
@@ -83,6 +84,7 @@ interface NavLink {
                 <circle cx="12" cy="12" r="5"/><line x1="12" y1="1" x2="12" y2="3"/><line x1="12" y1="21" x2="12" y2="23"/><line x1="4.22" y1="4.22" x2="5.64" y2="5.64"/><line x1="18.36" y1="18.36" x2="19.78" y2="19.78"/><line x1="1" y1="12" x2="3" y2="12"/><line x1="21" y1="12" x2="23" y2="12"/><line x1="4.22" y1="19.78" x2="5.64" y2="18.36"/><line x1="18.36" y1="5.64" x2="19.78" y2="4.22"/>
               </svg>
             }
+            <span class="nav-tooltip" role="tooltip">{{ themeService.currentTheme() === 'dark' ? 'Light Mode' : 'Dark Mode' }}</span>
           </button>
 
           <!-- GitHub -->
@@ -92,11 +94,11 @@ interface NavLink {
             rel="noopener noreferrer"
             class="icon-btn"
             aria-label="GitHub Profile"
-            title="GitHub"
           >
             <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
               <path d="M12 0c-6.626 0-12 5.373-12 12 0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23.957-.266 1.983-.399 3.003-.404 1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576 4.765-1.589 8.199-6.086 8.199-11.386 0-6.627-5.373-12-12-12z"/>
             </svg>
+            <span class="nav-tooltip" role="tooltip">GitHub</span>
           </a>
 
           <!-- LinkedIn -->
@@ -106,11 +108,11 @@ interface NavLink {
             rel="noopener noreferrer"
             class="icon-btn"
             aria-label="LinkedIn Profile"
-            title="LinkedIn"
           >
             <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
               <path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433c-1.144 0-2.063-.926-2.063-2.065 0-1.138.92-2.063 2.063-2.063 1.14 0 2.064.925 2.064 2.063 0 1.139-.925 2.065-2.064 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/>
             </svg>
+            <span class="nav-tooltip" role="tooltip">LinkedIn</span>
           </a>
 
           <!-- Mobile hamburger -->
@@ -256,6 +258,7 @@ interface NavLink {
     }
 
     .icon-btn {
+      position: relative;
       display: flex;
       align-items: center;
       justify-content: center;
@@ -284,17 +287,26 @@ interface NavLink {
 
     .ai-robot-btn {
       position: relative;
-      border-color: rgba(168, 85, 247, 0.4);
+      border-color: rgba(168, 85, 247, 0.45);
       color: #A855F7;
       padding: 0;
+      background: rgba(15, 15, 26, 0.6);
+
+      .bot-img-wrap {
+        width: 100%;
+        height: 100%;
+        border-radius: 9px;
+        overflow: hidden;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+      }
 
       .nav-bot-img {
-        width: 24px;
-        height: 24px;
-        border-radius: 50%;
+        width: 100%;
+        height: 100%;
         object-fit: cover;
         display: block;
-        box-shadow: 0 0 10px rgba(168, 85, 247, 0.4);
         transition: transform 0.25s ease;
       }
 
@@ -302,31 +314,86 @@ interface NavLink {
         color: #C084FC;
         border-color: #A855F7;
         background: rgba(168, 85, 247, 0.15);
-        box-shadow: 0 0 16px rgba(168, 85, 247, 0.35);
+        box-shadow: 0 0 16px rgba(168, 85, 247, 0.45);
         transform: translateY(-1px);
 
         .nav-bot-img {
-          transform: scale(1.1);
+          transform: scale(1.08);
         }
       }
 
       .ai-live-pulse {
         position: absolute;
-        top: 5px;
-        right: 5px;
-        width: 7px;
-        height: 7px;
+        top: -3px;
+        right: -3px;
+        width: 10px;
+        height: 10px;
         border-radius: 50%;
         background: #10B981;
-        box-shadow: 0 0 6px #10B981;
+        border: 2px solid #0B0F19;
+        box-shadow: 0 0 8px #10B981;
         animation: ai-dot-pulse 2s infinite ease-in-out;
         z-index: 2;
+        pointer-events: none;
       }
     }
 
     @keyframes ai-dot-pulse {
       0%, 100% { opacity: 1; transform: scale(1); }
       50% { opacity: 0.4; transform: scale(0.8); }
+    }
+
+    /* Helper Text Tooltip */
+    .nav-tooltip {
+      position: absolute;
+      top: calc(100% + 9px);
+      left: 50%;
+      transform: translateX(-50%) translateY(4px);
+      padding: 0.35rem 0.65rem;
+      border-radius: 7px;
+      font-size: 0.72rem;
+      font-weight: 500;
+      line-height: 1;
+      letter-spacing: 0.01em;
+      white-space: nowrap;
+      pointer-events: none;
+      z-index: 100;
+      opacity: 0;
+      visibility: hidden;
+      background: rgba(15, 17, 28, 0.95);
+      color: #F8FAFC;
+      border: 1px solid rgba(255, 255, 255, 0.14);
+      box-shadow: 0 4px 16px rgba(0, 0, 0, 0.45), 0 0 1px rgba(255, 255, 255, 0.2);
+      backdrop-filter: blur(12px);
+      -webkit-backdrop-filter: blur(12px);
+      transition: opacity 0.18s ease, transform 0.18s cubic-bezier(0.16, 1, 0.3, 1), visibility 0.18s;
+
+      &::before {
+        content: '';
+        position: absolute;
+        bottom: 100%;
+        left: 50%;
+        transform: translateX(-50%);
+        border: 4px solid transparent;
+        border-bottom-color: rgba(255, 255, 255, 0.14);
+      }
+
+      &::after {
+        content: '';
+        position: absolute;
+        bottom: 100%;
+        left: 50%;
+        transform: translateX(-50%);
+        border: 3px solid transparent;
+        border-bottom-color: rgba(15, 17, 28, 0.95);
+      }
+    }
+
+    .icon-btn:hover .nav-tooltip,
+    .icon-btn:focus-visible .nav-tooltip {
+      opacity: 1;
+      visibility: visible;
+      transform: translateX(-50%) translateY(0);
     }
 
     .mobile-ai-action {
@@ -409,7 +476,7 @@ interface NavLink {
     }
 
     :host-context([data-theme="light"]) .ai-robot-btn {
-      border-color: rgba(244, 114, 182, 0.4);
+      border-color: rgba(244, 114, 182, 0.5);
       color: #DB2777;
       background: rgba(255, 245, 248, 0.95);
 
@@ -418,6 +485,25 @@ interface NavLink {
         border-color: #E11D48;
         background: #FFE4E9;
         box-shadow: 0 0 16px rgba(244, 114, 182, 0.45);
+      }
+
+      .ai-live-pulse {
+        border-color: #FFF0F5;
+      }
+    }
+
+    :host-context([data-theme="light"]) .nav-tooltip {
+      background: #FFF5F8;
+      color: #881337;
+      border-color: rgba(244, 114, 182, 0.5);
+      box-shadow: 0 4px 14px rgba(225, 29, 72, 0.14);
+
+      &::before {
+        border-bottom-color: rgba(244, 114, 182, 0.5);
+      }
+
+      &::after {
+        border-bottom-color: #FFF5F8;
       }
     }
 

@@ -316,13 +316,12 @@ import { AssistantService, ChatMessage } from '../../../../core/services/assista
       align-items: center;
       justify-content: center;
       overflow: hidden;
-      padding: 1px;
+      padding: 0;
       flex-shrink: 0;
 
       .header-robot-avatar {
         width: 100%;
         height: 100%;
-        border-radius: 7px;
         object-fit: cover;
         display: block;
       }

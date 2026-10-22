@@ -26,6 +26,7 @@ import { AssistantService, ChatMessage } from '../../../../core/services/assista
       >
         <!-- Chat Terminal Card -->
         <div class="chat-terminal-drawer">
+          <div class="mobile-drag-pill" aria-hidden="true"></div>
           <!-- Terminal Header Bar -->
           <div class="terminal-header">
             <div class="header-left">
@@ -244,14 +245,25 @@ import { AssistantService, ChatMessage } from '../../../../core/services/assista
       overscroll-behavior: contain;
       animation: drawer-fade-up 0.3s cubic-bezier(0.16, 1, 0.3, 1) forwards;
 
-      @media (max-width: 600px) {
+      /* Tablet landscape & portrait */
+      @media (max-width: 1024px) and (min-width: 641px) {
+        width: 410px;
+        height: 590px;
+        bottom: 20px;
+        right: 20px;
+        max-height: calc(100vh - 36px);
+      }
+
+      /* Mobile bottom sheet view */
+      @media (max-width: 640px) {
         bottom: 0;
         right: 0;
         left: 0;
         width: 100%;
         max-width: 100%;
         height: 92vh;
-        max-height: 92vh;
+        height: 92dvh;
+        max-height: 92dvh;
         border-bottom-left-radius: 0;
         border-bottom-right-radius: 0;
       }
@@ -283,9 +295,23 @@ import { AssistantService, ChatMessage } from '../../../../core/services/assista
       overflow: hidden;
       overscroll-behavior: contain;
 
-      @media (max-width: 600px) {
-        border-bottom-left-radius: 0;
-        border-bottom-right-radius: 0;
+      @media (max-width: 640px) {
+        border-radius: 20px 20px 0 0;
+        border-bottom: none;
+      }
+    }
+
+    .mobile-drag-pill {
+      display: none;
+      width: 38px;
+      height: 4px;
+      border-radius: 9999px;
+      background: rgba(255, 255, 255, 0.25);
+      margin: 8px auto 2px;
+      flex-shrink: 0;
+
+      @media (max-width: 640px) {
+        display: block;
       }
     }
 
@@ -298,6 +324,10 @@ import { AssistantService, ChatMessage } from '../../../../core/services/assista
       background: rgba(15, 15, 32, 0.8);
       border-bottom: 1px solid rgba(255, 255, 255, 0.08);
       flex-shrink: 0;
+
+      @media (max-width: 640px) {
+        padding: 0.65rem 0.95rem;
+      }
     }
 
     .header-left {
@@ -457,6 +487,11 @@ import { AssistantService, ChatMessage } from '../../../../core/services/assista
         opacity: 0.5;
         cursor: not-allowed;
       }
+
+      @media (max-width: 640px) {
+        padding: 0.25rem 0.55rem;
+        font-size: 0.72rem;
+      }
     }
 
     /* Messages Scroll Area */
@@ -476,6 +511,11 @@ import { AssistantService, ChatMessage } from '../../../../core/services/assista
       gap: 1rem;
       scrollbar-width: thin;
       scrollbar-color: rgba(168, 85, 247, 0.4) transparent;
+
+      @media (max-width: 640px) {
+        padding: 0.75rem 0.85rem;
+        gap: 0.85rem;
+      }
 
       &::-webkit-scrollbar {
         width: 6px;
@@ -522,12 +562,22 @@ import { AssistantService, ChatMessage } from '../../../../core/services/assista
         transform: translateY(-2px);
         box-shadow: 0 6px 18px rgba(124, 58, 237, 0.45);
       }
+
+      @media (max-width: 640px) {
+        bottom: calc(76px + env(safe-area-inset-bottom, 0px));
+        right: 12px;
+      }
     }
 
     .message-row {
       display: flex;
       gap: 0.65rem;
       max-width: 90%;
+
+      @media (max-width: 640px) {
+        max-width: 96%;
+        gap: 0.5rem;
+      }
     }
 
     .user-row {
@@ -712,6 +762,10 @@ import { AssistantService, ChatMessage } from '../../../../core/services/assista
       background: rgba(10, 10, 24, 0.8);
       border-top: 1px solid rgba(255, 255, 255, 0.08);
       flex-shrink: 0;
+
+      @media (max-width: 640px) {
+        padding: 0.65rem 0.85rem max(0.85rem, env(safe-area-inset-bottom, 12px));
+      }
     }
 
     .input-wrapper {
@@ -826,6 +880,10 @@ import { AssistantService, ChatMessage } from '../../../../core/services/assista
         background: rgba(255, 240, 245, 0.98);
         border-color: rgba(244, 114, 182, 0.4);
         box-shadow: 0 24px 60px -12px rgba(225, 29, 72, 0.14), 0 0 32px rgba(244, 114, 182, 0.18);
+      }
+
+      .mobile-drag-pill {
+        background: rgba(225, 29, 72, 0.25);
       }
 
       .terminal-header {

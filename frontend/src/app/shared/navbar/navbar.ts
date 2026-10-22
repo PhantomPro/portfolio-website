@@ -219,6 +219,16 @@ interface NavLink {
         margin-left: 0.35rem;
         box-shadow: 0 0 8px var(--accent-glow);
       }
+
+      @media (max-width: 480px) {
+        font-size: 1.15rem;
+
+        .ai-badge-pill {
+          font-size: 0.58rem;
+          padding: 0.1rem 0.35rem;
+          margin-left: 0.25rem;
+        }
+      }
     }
 
     .nav-links {
@@ -255,6 +265,14 @@ interface NavLink {
       align-items: center;
       gap: 0.5rem;
       flex-shrink: 0;
+
+      @media (max-width: 768px) {
+        gap: 0.4rem;
+      }
+
+      @media (max-width: 480px) {
+        gap: 0.3rem;
+      }
     }
 
     .icon-btn {
@@ -288,7 +306,26 @@ interface NavLink {
         }
       }
 
-      @media (max-width: 600px) { width: 38px; height: 38px; min-width: 38px; min-height: 38px; }
+      @media (max-width: 768px) {
+        width: 38px;
+        height: 38px;
+        min-width: 38px;
+        min-height: 38px;
+        border-radius: 9px;
+      }
+
+      @media (max-width: 480px) {
+        width: 34px;
+        height: 34px;
+        min-width: 34px;
+        min-height: 34px;
+        border-radius: 8px;
+
+        svg {
+          width: 15px;
+          height: 15px;
+        }
+      }
     }
 
     .ai-robot-btn {
@@ -341,6 +378,28 @@ interface NavLink {
         animation: ai-dot-pulse 2s infinite ease-in-out;
         z-index: 2;
         pointer-events: none;
+      }
+
+      @media (max-width: 768px) {
+        .bot-img-wrap {
+          border-radius: 8px;
+        }
+        .ai-live-pulse {
+          width: 8px;
+          height: 8px;
+          top: -2px;
+          right: -2px;
+        }
+      }
+
+      @media (max-width: 480px) {
+        .bot-img-wrap {
+          border-radius: 7px;
+        }
+        .ai-live-pulse {
+          width: 7px;
+          height: 7px;
+        }
       }
     }
 
@@ -400,6 +459,12 @@ interface NavLink {
       opacity: 1;
       visibility: visible;
       transform: translateX(-50%) translateY(0);
+    }
+
+    @media (max-width: 768px) {
+      .nav-tooltip {
+        display: none !important;
+      }
     }
 
     .mobile-ai-action {
@@ -542,6 +607,24 @@ interface NavLink {
       touch-action: manipulation;
 
       @media (max-width: 900px) { display: flex; }
+
+      @media (max-width: 768px) {
+        width: 38px;
+        height: 38px;
+        min-width: 38px;
+        min-height: 38px;
+        padding: 8px;
+        border-radius: 9px;
+      }
+
+      @media (max-width: 480px) {
+        width: 34px;
+        height: 34px;
+        min-width: 34px;
+        min-height: 34px;
+        padding: 7px;
+        border-radius: 8px;
+      }
 
       span {
         display: block;

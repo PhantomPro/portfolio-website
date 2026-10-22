@@ -98,32 +98,7 @@ interface Node {
     }
 
     :host-context([data-theme="light"]) .ambient-glow {
-      opacity: 0.08;
-      filter: blur(110px);
-    }
-
-    :host-context([data-theme="light"]) .glow-top {
-      top: -180px;
-      left: 50%;
-      transform: translateX(-50%);
-      width: 1000px;
-      height: 520px;
-      background: radial-gradient(ellipse, rgba(99, 102, 241, 0.18) 0%, rgba(168, 85, 247, 0.09) 45%, rgba(6, 182, 212, 0.05) 65%, transparent 80%);
-      opacity: 1;
-    }
-
-    :host-context([data-theme="light"]) .glow-mid {
       display: none;
-    }
-
-    :host-context([data-theme="light"]) .glow-bottom {
-      bottom: -180px;
-      left: 50%;
-      transform: translateX(-50%);
-      width: 900px;
-      height: 400px;
-      background: radial-gradient(ellipse, rgba(99, 102, 241, 0.08) 0%, rgba(6, 182, 212, 0.04) 50%, transparent 80%);
-      opacity: 0.8;
     }
 
     .neural-canvas {
@@ -137,7 +112,7 @@ interface Node {
     }
 
     :host-context([data-theme="light"]) .neural-canvas {
-      opacity: 0.32;
+      opacity: 0.25;
     }
   `],
 })

@@ -135,6 +135,10 @@ import { Profile } from '../../../../core/models/profile.model';
       pointer-events: none;
     }
 
+    :host-context([data-theme="light"]) .hero-glow {
+      background: radial-gradient(ellipse at 50% 20%, rgba(99, 102, 241, 0.12) 0%, rgba(168, 85, 247, 0.06) 45%, transparent 70%);
+    }
+
     .hero-container {
       display: grid;
       grid-template-columns: minmax(0, 1.15fr) minmax(0, 0.85fr);

@@ -5,6 +5,7 @@ import {
   AfterViewChecked,
   HostListener,
   inject,
+  signal,
 } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
@@ -92,6 +93,7 @@ import { AssistantService, ChatMessage } from '../../../../core/services/assista
             role="log"
             aria-live="polite"
             aria-relevant="additions"
+            (scroll)="onScroll()"
           >
             @for (msg of assistantService.messages(); track msg.id) {
               <div
@@ -165,6 +167,19 @@ import { AssistantService, ChatMessage } from '../../../../core/services/assista
               </div>
             }
           </div>
+
+          <!-- Jump to bottom button -->
+          @if (isScrolledUp()) {
+            <button
+              class="btn-scroll-bottom"
+              (click)="scrollToBottom(true)"
+              aria-label="Scroll to latest messages"
+              title="Jump to latest"
+            >
+              <svg xmlns="http://www.w3.org/2000/svg" width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><line x1="12" y1="5" x2="12" y2="19"/><polyline points="19 12 12 19 5 12"/></svg>
+              <span>Latest</span>
+            </button>
+          }
 
           <!-- Chat Input Area -->
           <div class="input-container">
@@ -448,6 +463,10 @@ import { AssistantService, ChatMessage } from '../../../../core/services/assista
       overflow-y: auto;
       overflow-x: hidden;
       overscroll-behavior: contain;
+      touch-action: pan-y;
+      -webkit-overflow-scrolling: touch;
+      overflow-anchor: none;
+      scroll-behavior: smooth;
       padding: 1rem;
       display: flex;
       flex-direction: column;
@@ -467,6 +486,38 @@ import { AssistantService, ChatMessage } from '../../../../core/services/assista
         &:hover {
           background: rgba(168, 85, 247, 0.65);
         }
+      }
+    }
+
+    /* Jump to Bottom Button */
+    .btn-scroll-bottom {
+      position: absolute;
+      bottom: 84px;
+      right: 18px;
+      z-index: 20;
+      display: inline-flex;
+      align-items: center;
+      gap: 0.35rem;
+      padding: 0.35rem 0.65rem;
+      border-radius: 9999px;
+      background: rgba(15, 15, 30, 0.95);
+      border: 1px solid rgba(168, 85, 247, 0.45);
+      color: #F8FAFC;
+      font-size: 0.72rem;
+      font-weight: 600;
+      box-shadow: 0 4px 14px rgba(0, 0, 0, 0.45), 0 0 12px rgba(168, 85, 247, 0.25);
+      cursor: pointer;
+      backdrop-filter: blur(10px);
+      -webkit-backdrop-filter: blur(10px);
+      transition: all 0.2s cubic-bezier(0.16, 1, 0.3, 1);
+      animation: drawer-fade-up 0.2s ease-out;
+
+      &:hover {
+        background: #7C3AED;
+        border-color: #A855F7;
+        color: #FFFFFF;
+        transform: translateY(-2px);
+        box-shadow: 0 6px 18px rgba(124, 58, 237, 0.45);
       }
     }
 
@@ -844,6 +895,19 @@ import { AssistantService, ChatMessage } from '../../../../core/services/assista
         }
       }
 
+      .btn-scroll-bottom {
+        background: #FFFFFF;
+        border-color: rgba(147, 51, 234, 0.3);
+        color: #1E293B;
+        box-shadow: 0 4px 14px rgba(0, 0, 0, 0.1), 0 0 10px rgba(147, 51, 234, 0.15);
+
+        &:hover {
+          background: #7C3AED;
+          border-color: #7C3AED;
+          color: #FFFFFF;
+        }
+      }
+
       .assistant-avatar {
         background: linear-gradient(135deg, #7C3AED, #9333EA);
         color: #FFFFFF;
@@ -1004,6 +1068,7 @@ export class AiAssistantComponent implements AfterViewChecked {
 
   userInput = '';
 
+  readonly isScrolledUp = signal(false);
   private prevMessageCount = 0;
   private prevLoading = false;
 
@@ -1023,13 +1088,22 @@ export class AiAssistantComponent implements AfterViewChecked {
     }
   }
 
+  onScroll(): void {
+    if (!this.messagesContainer?.nativeElement) return;
+    const { scrollTop, scrollHeight, clientHeight } = this.messagesContainer.nativeElement;
+    const distanceFromBottom = scrollHeight - scrollTop - clientHeight;
+    this.isScrolledUp.set(distanceFromBottom > 60);
+  }
+
   ngAfterViewChecked(): void {
     const currentCount = this.assistantService.messages().length;
     const currentLoading = this.assistantService.isLoading();
     if (currentCount !== this.prevMessageCount || currentLoading !== this.prevLoading) {
       this.prevMessageCount = currentCount;
       this.prevLoading = currentLoading;
-      this.scrollToBottom();
+      if (!this.isScrolledUp()) {
+        this.scrollToBottom();
+      }
     }
   }
 
@@ -1105,7 +1179,10 @@ export class AiAssistantComponent implements AfterViewChecked {
     return `<p>${formatted}</p>`;
   }
 
-  private scrollToBottom(): void {
+  scrollToBottom(force = false): void {
+    if (force) {
+      this.isScrolledUp.set(false);
+    }
     setTimeout(() => {
       try {
         if (this.messagesContainer?.nativeElement) {
@@ -1115,6 +1192,6 @@ export class AiAssistantComponent implements AfterViewChecked {
           });
         }
       } catch (_) {}
-    }, 60);
+    }, 40);
   }
 }

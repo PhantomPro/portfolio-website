@@ -267,19 +267,25 @@ interface NavLink {
       min-width: 40px;
       min-height: 40px;
       border-radius: 10px;
-      border: 1px solid var(--border-subtle);
-      background: transparent;
+      border: 1px solid rgba(255, 255, 255, 0.12);
+      background: rgba(15, 17, 28, 0.6);
       color: var(--text-secondary);
       cursor: pointer;
-      transition: all 0.2s ease;
+      transition: all 0.25s cubic-bezier(0.16, 1, 0.3, 1);
       text-decoration: none;
       touch-action: manipulation;
 
-      &:hover {
-        color: var(--text-primary);
-        border-color: var(--border-default);
-        background: var(--accent-subtle);
-        transform: translateY(-1px);
+      &:hover, &:focus-visible {
+        color: #C084FC;
+        border-color: rgba(168, 85, 247, 0.65);
+        background: rgba(168, 85, 247, 0.16);
+        box-shadow: 0 0 18px rgba(168, 85, 247, 0.45), 0 4px 12px rgba(0, 0, 0, 0.35);
+        transform: translateY(-2px);
+
+        svg {
+          filter: drop-shadow(0 0 6px rgba(192, 132, 252, 0.5));
+          color: #C084FC;
+        }
       }
 
       @media (max-width: 600px) { width: 38px; height: 38px; min-width: 38px; min-height: 38px; }
@@ -467,11 +473,17 @@ interface NavLink {
       color: #881337;
       box-shadow: 0 1px 2px rgba(225, 29, 72, 0.06);
 
-      &:hover {
+      &:hover, &:focus-visible {
         background: #FFE4E9;
-        border-color: rgba(225, 29, 72, 0.45);
+        border-color: rgba(225, 29, 72, 0.5);
         color: #E11D48;
-        box-shadow: 0 4px 12px rgba(244, 114, 182, 0.2);
+        box-shadow: 0 0 16px rgba(244, 114, 182, 0.45), 0 4px 12px rgba(225, 29, 72, 0.18);
+        transform: translateY(-2px);
+
+        svg {
+          filter: drop-shadow(0 0 6px rgba(225, 29, 72, 0.45));
+          color: #E11D48;
+        }
       }
     }
 

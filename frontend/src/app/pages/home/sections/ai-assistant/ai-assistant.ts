@@ -722,14 +722,16 @@ export class AiAssistantComponent implements AfterViewChecked {
       .replace(/\*(.*?)\*/g, '<em>$1</em>')
       // Section jump links e.g. [View Projects](#projects)
       .replace(
-        /\[(.*?)\]\((#.*?)\)/g,
+        /\[([^\]]+)\]\((#[^)]+)\)/g,
         '<a href="$2" onclick="document.querySelector(\'$2\')?.scrollIntoView({behavior:\'smooth\'}); return false;">$1</a>'
       )
-      // External links
+      // External links e.g. [GitHub Repository](https://github.com/...)
       .replace(
-        /\[(.*?)\]\((https?:\/\/.*?)\)/g,
+        /\[([^\]]+)\]\((https?:\/\/[^)]+)\)/g,
         '<a href="$2" target="_blank" rel="noopener noreferrer">$1 ↗</a>'
       )
+      // Clean up any stray dangling bracket links e.g. [GitHub Repository] without URL
+      .replace(/\[([^\]]+)\](?!\()/g, '<strong>$1</strong>')
       // Linebreaks
       .replace(/\n\n/g, '</p><p>')
       .replace(/\n/g, '<br/>');

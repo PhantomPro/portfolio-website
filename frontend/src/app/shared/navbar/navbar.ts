@@ -294,15 +294,15 @@ interface NavLink {
       touch-action: manipulation;
 
       &:hover, &:focus-visible {
-        color: #C084FC;
-        border-color: rgba(168, 85, 247, 0.65);
-        background: rgba(168, 85, 247, 0.16);
-        box-shadow: 0 0 18px rgba(168, 85, 247, 0.45), 0 4px 12px rgba(0, 0, 0, 0.35);
+        color: var(--accent-primary);
+        border-color: rgba(129, 140, 248, 0.4);
+        background: rgba(129, 140, 248, 0.08);
+        box-shadow: 0 4px 14px rgba(0, 0, 0, 0.35), 0 0 10px rgba(129, 140, 248, 0.18);
         transform: translateY(-2px);
 
         svg {
-          filter: drop-shadow(0 0 6px rgba(192, 132, 252, 0.5));
-          color: #C084FC;
+          filter: drop-shadow(0 0 4px rgba(129, 140, 248, 0.3));
+          color: var(--accent-primary);
         }
       }
 
@@ -330,10 +330,10 @@ interface NavLink {
 
     .ai-robot-btn {
       position: relative;
-      border-color: rgba(168, 85, 247, 0.45);
-      color: #A855F7;
+      border: 1px solid rgba(255, 255, 255, 0.12);
+      color: var(--text-secondary);
       padding: 0;
-      background: rgba(15, 15, 26, 0.6);
+      background: rgba(15, 17, 28, 0.6);
 
       .bot-img-wrap {
         width: 100%;
@@ -354,14 +354,14 @@ interface NavLink {
       }
 
       &:hover, &.active {
-        color: #C084FC;
-        border-color: #A855F7;
-        background: rgba(168, 85, 247, 0.15);
-        box-shadow: 0 0 16px rgba(168, 85, 247, 0.45);
+        color: var(--accent-primary);
+        border-color: rgba(129, 140, 248, 0.4);
+        background: rgba(129, 140, 248, 0.08);
+        box-shadow: 0 4px 14px rgba(0, 0, 0, 0.35), 0 0 10px rgba(129, 140, 248, 0.18);
         transform: translateY(-1px);
 
         .nav-bot-img {
-          transform: scale(1.08);
+          transform: scale(1.05);
         }
       }
 
@@ -519,7 +519,7 @@ interface NavLink {
 
     @keyframes ai-pulse {
       0%, 100% { transform: scale(1) rotate(0deg); }
-      50% { transform: scale(1.1) rotate(90deg); filter: drop-shadow(0 0 6px #A855F7); }
+      50% { transform: scale(1.1) rotate(90deg); filter: drop-shadow(0 0 6px var(--accent-glow)); }
     }
 
     .resume-btn {

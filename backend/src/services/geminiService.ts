@@ -95,10 +95,10 @@ BEHAVIOR & CONSTRAINTS:
 export class GeminiAssistantService {
   private client: GoogleGenAI | null = null;
   private readonly primaryModel: string;
-  private readonly fallbackModel = 'gemini-1.5-flash';
+  private readonly fallbackModel = 'gemini-3.8-flash';
 
   constructor() {
-    this.primaryModel = config.geminiModel || 'gemini-2.5-flash';
+    this.primaryModel = config.geminiModel || 'gemini-3.5-flash-lite';
     if (config.geminiApiKey) {
       this.client = new GoogleGenAI({ apiKey: config.geminiApiKey });
     }

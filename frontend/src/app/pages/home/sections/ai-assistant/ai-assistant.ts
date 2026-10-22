@@ -29,7 +29,7 @@ import { AssistantService, ChatMessage } from '../../../../core/services/assista
           <div class="terminal-header">
             <div class="terminal-status">
               <span class="status-pulse"></span>
-              <span class="status-text">Gemini 2.5 Flash Online</span>
+              <span class="status-text">Gemini Flash Online</span>
               <span class="tier-badge">Free Tier</span>
             </div>
 

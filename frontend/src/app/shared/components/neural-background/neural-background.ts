@@ -54,9 +54,12 @@ interface Node {
 
     :host-context([data-theme="light"]) .cyber-grid {
       background-image:
-        linear-gradient(rgba(79, 70, 229, 0.08) 1px, transparent 1px),
-        linear-gradient(90deg, rgba(79, 70, 229, 0.08) 1px, transparent 1px);
-      opacity: 0.7;
+        linear-gradient(rgba(99, 102, 241, 0.04) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(99, 102, 241, 0.04) 1px, transparent 1px);
+      background-size: 44px 44px;
+      opacity: 0.6;
+      mask-image: radial-gradient(ellipse 75% 60% at 50% 25%, black 40%, transparent 85%);
+      -webkit-mask-image: radial-gradient(ellipse 75% 60% at 50% 25%, black 40%, transparent 85%);
     }
 
     .ambient-glow {
@@ -95,20 +98,32 @@ interface Node {
     }
 
     :host-context([data-theme="light"]) .ambient-glow {
-      opacity: 0.12;
-      filter: blur(150px);
+      opacity: 0.08;
+      filter: blur(110px);
     }
 
     :host-context([data-theme="light"]) .glow-top {
-      background: radial-gradient(circle, rgba(79, 70, 229, 0.25) 0%, rgba(124, 58, 237, 0.12) 50%, transparent 75%);
+      top: -180px;
+      left: 50%;
+      transform: translateX(-50%);
+      width: 1000px;
+      height: 520px;
+      background: radial-gradient(ellipse, rgba(99, 102, 241, 0.18) 0%, rgba(168, 85, 247, 0.09) 45%, rgba(6, 182, 212, 0.05) 65%, transparent 80%);
+      opacity: 1;
     }
 
     :host-context([data-theme="light"]) .glow-mid {
-      background: radial-gradient(circle, rgba(219, 39, 119, 0.18) 0%, rgba(79, 70, 229, 0.10) 50%, transparent 75%);
+      display: none;
     }
 
     :host-context([data-theme="light"]) .glow-bottom {
-      background: radial-gradient(circle, rgba(2, 132, 199, 0.22) 0%, rgba(59, 130, 246, 0.10) 50%, transparent 75%);
+      bottom: -180px;
+      left: 50%;
+      transform: translateX(-50%);
+      width: 900px;
+      height: 400px;
+      background: radial-gradient(ellipse, rgba(99, 102, 241, 0.08) 0%, rgba(6, 182, 212, 0.04) 50%, transparent 80%);
+      opacity: 0.8;
     }
 
     .neural-canvas {
@@ -122,7 +137,7 @@ interface Node {
     }
 
     :host-context([data-theme="light"]) .neural-canvas {
-      opacity: 0.55;
+      opacity: 0.32;
     }
   `],
 })

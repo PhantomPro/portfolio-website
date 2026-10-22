@@ -334,7 +334,12 @@ interface FilterOption {
       font-family: 'Inter', sans-serif;
 
       &:hover { color: var(--text-primary); border-color: var(--border-strong); }
-      &.active { background: var(--accent-subtle); border-color: var(--accent-primary); color: var(--accent-primary); }
+      &.active {
+        background: var(--gradient-primary);
+        border-color: transparent;
+        color: #fff;
+        box-shadow: 0 4px 14px var(--accent-glow);
+      }
     }
 
     .projects-grid {

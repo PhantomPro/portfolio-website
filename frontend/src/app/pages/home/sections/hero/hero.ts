@@ -391,6 +391,60 @@ import { Profile } from '../../../../core/models/profile.model';
       @media (max-width: 1024px) { display: none; }
     }
 
+    /* Light Mode Terminal Refinement */
+    :host-context([data-theme="light"]) .terminal-window {
+      background: #FFFFFF;
+      border: 1px solid rgba(226, 232, 240, 0.95);
+      box-shadow:
+        0 1px 1px rgba(255, 255, 255, 1) inset,
+        0 20px 45px -10px rgba(79, 70, 229, 0.15),
+        0 10px 20px -5px rgba(15, 23, 42, 0.05);
+
+      .terminal-header {
+        background: #F8FAFC;
+        border-bottom: 1px solid rgba(226, 232, 240, 0.9);
+      }
+
+      .terminal-title {
+        color: #475569;
+        font-weight: 600;
+      }
+
+      .terminal-badge {
+        background: rgba(99, 102, 241, 0.08);
+        border: 1px solid rgba(99, 102, 241, 0.22);
+        color: #4338CA;
+      }
+
+      .prompt-line {
+        border-bottom: 1px dashed rgba(15, 23, 42, 0.08);
+      }
+
+      .token-prompt { color: #059669; font-weight: 700; }
+      .token-command { color: #0284C7; font-weight: 600; }
+      .token-flag { color: #D946EF; }
+      .token-comment { color: #94A3B8; font-style: italic; }
+
+      .token-keyword { color: #7C3AED; font-weight: 600; }
+      .token-type { color: #D97706; }
+      .token-string { color: #059669; }
+      .token-property { color: #2563EB; }
+      .token-variable { color: #0F172A; }
+      .token-function { color: #4F46E5; }
+    }
+
+    :host-context([data-theme="light"]) .floating-badge {
+      background: rgba(255, 255, 255, 0.94);
+      border: 1px solid rgba(226, 232, 240, 0.95);
+      box-shadow: 0 10px 25px -4px rgba(79, 70, 229, 0.12), 0 4px 6px -2px rgba(15, 23, 42, 0.04);
+      color: #0F172A;
+
+      &:hover {
+        border-color: rgba(99, 102, 241, 0.4);
+        box-shadow: 0 16px 32px -4px rgba(79, 70, 229, 0.2);
+      }
+    }
+
     .badge-1 {
       top: -0.75rem;
       right: 1rem;

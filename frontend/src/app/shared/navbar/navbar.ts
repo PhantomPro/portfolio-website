@@ -298,6 +298,26 @@ interface NavLink {
       @media (max-width: 900px) { display: none; }
     }
 
+    :host-context([data-theme="light"]) .navbar.scrolled {
+      background: rgba(255, 255, 255, 0.88);
+      border-bottom: 1px solid rgba(226, 232, 240, 0.9);
+      box-shadow: 0 4px 20px -2px rgba(15, 23, 42, 0.04);
+    }
+
+    :host-context([data-theme="light"]) .icon-btn {
+      background: rgba(255, 255, 255, 0.9);
+      border: 1px solid rgba(203, 213, 225, 0.8);
+      color: #334155;
+      box-shadow: 0 1px 2px rgba(15, 23, 42, 0.04);
+
+      &:hover {
+        background: #FFFFFF;
+        border-color: rgba(99, 102, 241, 0.45);
+        color: #4F46E5;
+        box-shadow: 0 4px 12px rgba(79, 70, 229, 0.12);
+      }
+    }
+
     /* Accessible 44px touch target Hamburger */
     .hamburger {
       display: none;

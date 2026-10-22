@@ -20,7 +20,20 @@ const app = express();
 app.use(helmet({ crossOriginResourcePolicy: { policy: 'cross-origin' } }));
 app.use(
   cors({
-    origin: [config.frontendUrl, 'http://localhost:4200'],
+    origin: (origin, callback) => {
+      // Allow requests with no origin (like mobile apps, curl, or same-origin)
+      if (!origin) return callback(null, true);
+      const allowed = [
+        config.frontendUrl,
+        'http://localhost:4200',
+        'http://localhost:4205',
+        'https://phantompro.github.io',
+      ];
+      if (allowed.includes(origin) || origin.startsWith('http://localhost:')) {
+        return callback(null, true);
+      }
+      return callback(null, true); // Allow all during development/portfolio access
+    },
     credentials: true,
   })
 );

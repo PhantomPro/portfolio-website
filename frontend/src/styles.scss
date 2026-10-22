@@ -6,8 +6,9 @@
 /* Google Fonts Import */
 @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&family=JetBrains+Mono:wght@400;500;600&display=swap');
 
-/* ─── CSS Custom Properties — AI Neural Theme (Default) ─── */
+/* ─── CSS Custom Properties — Dark Mode (Neural Cyber Palette - Default) ─── */
 :root,
+[data-theme="dark"],
 [data-theme="ai"] {
   /* Ultra-deep Neural Obsidian Backgrounds */
   --bg-primary:    #05050A;
@@ -63,56 +64,6 @@
   --section-divider: rgba(129, 140, 248, 0.08);
 
   /* Status */
-  --success: #10B981;
-  --error:   #F87171;
-  --warning: #FBBF24;
-}
-
-/* ─── Classic Dark Theme ─── */
-[data-theme="dark"] {
-  --bg-primary:    #0A0A0F;
-  --bg-secondary:  #111118;
-  --bg-surface:    #16161F;
-  --bg-card:       #1C1C28;
-  --bg-elevated:   #22222E;
-
-  --text-primary:   #F1F5F9;
-  --text-secondary: #94A3B8;
-  --text-tertiary:  #64748B;
-  --text-inverse:   #0A0A0F;
-
-  --accent-primary:   #7C6FF7;
-  --accent-secondary: #5B52D6;
-  --accent-glow:      rgba(124, 111, 247, 0.35);
-  --accent-subtle:    rgba(124, 111, 247, 0.12);
-
-  --cyan:        #22D3EE;
-  --cyan-glow:   rgba(34, 211, 238, 0.2);
-  --cyan-subtle: rgba(34, 211, 238, 0.08);
-
-  --border-subtle:  rgba(255, 255, 255, 0.06);
-  --border-default: rgba(255, 255, 255, 0.10);
-  --border-strong:  rgba(255, 255, 255, 0.18);
-  --border-accent:  rgba(124, 111, 247, 0.4);
-
-  --navbar-bg-scroll: rgba(10, 10, 15, 0.85);
-  --navbar-bg-top:    transparent;
-
-  --shadow-sm:  0 1px 3px rgba(0,0,0,0.4);
-  --shadow-md:  0 4px 16px rgba(0,0,0,0.5);
-  --shadow-lg:  0 8px 32px rgba(0,0,0,0.6);
-  --shadow-xl:  0 20px 60px rgba(0,0,0,0.7);
-  --shadow-accent: 0 0 30px rgba(124,111,247,0.25);
-
-  --gradient-primary: linear-gradient(135deg, #7C6FF7 0%, #5B52D6 100%);
-  --gradient-secondary: linear-gradient(135deg, #22D3EE 0%, #7C6FF7 100%);
-  --gradient-surface: linear-gradient(135deg, #1C1C28 0%, #22222E 100%);
-  --gradient-hero: radial-gradient(ellipse 80% 60% at 50% -20%, rgba(124,111,247,0.18) 0%, transparent 70%);
-  --gradient-text: linear-gradient(135deg, #F1F5F9 0%, #94A3B8 100%);
-  --gradient-accent-text: linear-gradient(135deg, #7C6FF7 0%, #22D3EE 100%);
-
-  --section-divider: rgba(255,255,255,0.05);
-
   --success: #10B981;
   --error:   #F87171;
   --warning: #FBBF24;
@@ -494,15 +445,12 @@ code, .mono {
   margin: 0;
 }
 
-[data-theme="dark"] .divider {
-  background: linear-gradient(90deg, transparent 0%, rgba(255, 255, 255, 0.08) 50%, transparent 100%);
-}
-
 [data-theme="light"] .divider {
   background: linear-gradient(90deg, transparent 0%, rgba(0, 0, 0, 0.08) 50%, transparent 100%);
 }
 
-/* ─── Seamless Whole-Page AI Theme Continuity ─── */
+/* ─── Seamless Whole-Page Neural Dark Theme Continuity ─── */
+[data-theme="dark"],
 [data-theme="ai"] {
   .skill-card,
   .project-card,

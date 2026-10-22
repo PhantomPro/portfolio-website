@@ -232,6 +232,7 @@ import { AssistantService, ChatMessage } from '../../../../core/services/assista
       max-width: calc(100vw - 32px);
       height: 620px;
       max-height: calc(100vh - 40px);
+      overscroll-behavior: contain;
       animation: drawer-fade-up 0.3s cubic-bezier(0.16, 1, 0.3, 1) forwards;
 
       @media (max-width: 600px) {
@@ -270,6 +271,7 @@ import { AssistantService, ChatMessage } from '../../../../core/services/assista
       -webkit-backdrop-filter: blur(24px);
       box-shadow: 0 24px 60px -12px rgba(0, 0, 0, 0.85), 0 0 36px rgba(168, 85, 247, 0.25);
       overflow: hidden;
+      overscroll-behavior: contain;
 
       @media (max-width: 600px) {
         border-bottom-left-radius: 0;
@@ -442,6 +444,7 @@ import { AssistantService, ChatMessage } from '../../../../core/services/assista
     .messages-scroll {
       flex: 1;
       overflow-y: auto;
+      overscroll-behavior: contain;
       padding: 1rem;
       display: flex;
       flex-direction: column;
@@ -794,10 +797,16 @@ export class AiAssistantComponent implements AfterViewChecked {
     'What projects has Tanmay built?',
     'Explain his VS Code AI coding assistant.',
     'What are his strongest technical skills?',
-    'Tell me about his experience at Ascendion.',
+    'Tell me about his work experience.',
     'Show projects using React and Node.js.',
     'Why should we hire Tanmay?',
   ];
+
+  @HostListener('wheel', ['$event'])
+  onWheel(event: WheelEvent): void {
+    // Prevent background page from scrolling when cursor is over the chat drawer
+    event.stopPropagation();
+  }
 
   @HostListener('document:keydown.escape')
   onEscape(): void {

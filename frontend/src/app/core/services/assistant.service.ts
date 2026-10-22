@@ -30,13 +30,13 @@ const INITIAL_GREETING: ChatMessage = {
   role: 'assistant',
   text:
     'Hi! I’m Tanmay’s **Portfolio AI Assistant**.\n\n' +
-    'Ask me anything about Tanmay’s **software engineering experience at Ascendion**, his **VS Code AI coding assistant**, **projects**, or **technical stack**.\n\n' +
+    'Ask me anything about Tanmay’s **software engineering experience**, his **VS Code AI coding assistant**, **projects**, or **technical stack**.\n\n' +
     'Try one of the suggested prompts below, or ask your own question!',
   timestamp: new Date(),
   grounded: true,
   suggestedActions: [
     { label: 'View Projects', action: 'navigate', target: 'projects' },
-    { label: 'Ascendion Role', action: 'navigate', target: 'experience' },
+    { label: 'Experience', action: 'navigate', target: 'experience' },
     { label: 'Core Skills', action: 'navigate', target: 'skills' },
   ],
 };
@@ -223,7 +223,7 @@ export class AssistantService {
           grounded: true,
           suggestedActions: [
             { label: 'View Projects', action: 'navigate', target: 'projects' },
-            { label: 'Ascendion Experience', action: 'navigate', target: 'experience' },
+            { label: 'View Experience', action: 'navigate', target: 'experience' },
           ],
         },
       };
@@ -252,7 +252,7 @@ export class AssistantService {
         success: true,
         data: {
           reply:
-            'Tanmay’s work on the **VS Code AI Coding Assistant** at Ascendion:\n\n' +
+            'Tanmay’s work on the **VS Code AI Coding Assistant**:\n\n' +
             '- Built a chatbot-style coding companion directly integrated inside the VS Code editor.\n' +
             '- Developed backend microservices and REST APIs using TypeScript, Node.js, and FastAPI.\n' +
             '- Implemented a chat filter feature to streamline developer conversation navigation.\n' +
@@ -292,7 +292,7 @@ export class AssistantService {
             'Projects built with **React.js & Node.js**:\n\n' +
             '1. **AI Image Generator**: React 18 frontend with Node.js/Express backend proxy to securely handle OpenAI API requests and caching ([View Projects](#projects)).\n' +
             '2. **Project Graphite**: React & modular JavaScript visual workbench with Node.js backend.\n' +
-            '3. **Experience Studio 2.5 (Ascendion)**: React & Angular generative AI platform with Node.js microservices ([View Experience](#experience)).',
+            '3. **Experience Studio 2.5**: React & Angular generative AI platform with Node.js microservices ([View Experience](#experience)).',
           model: 'gemini-grounded-client',
           grounded: true,
           suggestedActions: [
@@ -309,9 +309,9 @@ export class AssistantService {
         data: {
           reply:
             'You should consider Tanmay Basu for engineering roles for several key reasons:\n\n' +
-            '- **AI & Full-Stack Expertise:** At Ascendion, Tanmay engineers AI-powered developer tooling, including a VS Code AI assistant extension with FastAPI microservices and LLM context workflows ([View Experience](#experience)).\n' +
+            '- **AI & Full-Stack Expertise:** Tanmay engineers AI-powered developer tooling, including a VS Code AI assistant extension with FastAPI microservices and LLM context workflows ([View Experience](#experience)).\n' +
             '- **Modern Tech Stack:** 2+ years of production experience across TypeScript, Angular 17+, React, Node.js, Python, PostgreSQL, and GraphQL ([View Skills](#skills)).\n' +
-            '- **Enterprise UI & Performance:** Contributed to Ascendion’s generative AI Experience Studio (AAVA Design System), building reusable design systems and reducing API latency by 35%.\n' +
+            '- **Enterprise UI & Performance:** Contributed to the generative AI Experience Studio (AAVA Design System), building reusable design systems and reducing API latency by 35%.\n' +
             '- **Strong CS Fundamentals:** 350+ algorithmic coding problems solved on LeetCode/GFG and a B.Tech in CSE from VIT Bhopal (CGPA: 8.0).\n\n' +
             'Feel free to explore his [Projects](#projects) or reach out via [Contact](#contact).',
           model: 'gemini-grounded-client',
@@ -365,7 +365,7 @@ export class AssistantService {
       success: true,
       data: {
         reply:
-          'I am Tanmay Basu’s AI portfolio assistant. I can answer questions about his **experience at Ascendion**, his **VS Code AI plugin**, his **5 key projects**, and his **technical stack**.\n\n' +
+          'I am Tanmay Basu’s AI portfolio assistant. I can answer questions about his **professional experience**, his **VS Code AI plugin**, his **5 key projects**, and his **technical stack**.\n\n' +
           'Feel free to ask a question or explore:\n' +
           '- [View Projects](#projects)\n' +
           '- [View Experience](#experience)\n' +

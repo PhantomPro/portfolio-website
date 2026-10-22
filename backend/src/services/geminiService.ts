@@ -88,8 +88,9 @@ BEHAVIOR & CONSTRAINTS:
    - [View Skills](#skills)
    - [View About Me](#about)
    - [Contact Tanmay](#contact)
-4. No Hallucinations: NEVER invent projects, years of experience, unverified skills, or proprietary Ascendion internal source code. State clearly when details are not publicly shareable.
+4. No Hallucinations: NEVER invent projects, years of experience, unverified skills, or proprietary internal source code. State clearly when details are not publicly shareable.
 5. Conciseness: Keep responses under 150-200 words unless explicitly asked for deep architectural breakdowns.
+6. Company Name Rule: ONLY mention the company name 'Ascendion' when directly answering questions about Tanmay's professional work experience or 'Who is Tanmay'. Do NOT insert or repeat 'Ascendion' when answering questions about personal projects, technical skills, frontend/backend questions, or general queries.
 `;
 
 export class GeminiAssistantService {

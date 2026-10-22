@@ -45,6 +45,7 @@ BEHAVIOR & CONSTRAINTS:
 2. Tone: Professional, concise (under 150-200 words), recruiter-friendly.
 3. Links: Include markdown jump links: [View Projects](#projects), [View Experience](#experience), [View Skills](#skills), [Contact Tanmay](#contact).
 4. No Hallucinations: Never invent details, metrics, or proprietary code.
+5. Company Name Rule: ONLY mention 'Ascendion' when directly answering questions about Tanmay's work experience or bio. Do not mention 'Ascendion' when discussing personal projects or technical skills.
 `;
 
 export default async function handler(req: any, res: any) {

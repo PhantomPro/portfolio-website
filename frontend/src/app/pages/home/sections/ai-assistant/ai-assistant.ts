@@ -807,52 +807,52 @@ import { AssistantService, ChatMessage } from '../../../../core/services/assista
       to { transform: rotate(360deg); }
     }
 
-    /* Light Theme Optimization */
+    /* Light Theme Baby Pink Optimization */
     :host-context([data-theme="light"]) {
       .chat-terminal-drawer {
-        background: rgba(255, 255, 255, 0.98);
-        border-color: rgba(147, 51, 234, 0.25);
-        box-shadow: 0 24px 60px -12px rgba(15, 23, 42, 0.18), 0 0 32px rgba(147, 51, 234, 0.1);
+        background: rgba(255, 240, 245, 0.98);
+        border-color: rgba(244, 114, 182, 0.4);
+        box-shadow: 0 24px 60px -12px rgba(225, 29, 72, 0.14), 0 0 32px rgba(244, 114, 182, 0.18);
       }
 
       .terminal-header {
-        background: rgba(248, 250, 252, 0.95);
-        border-bottom-color: rgba(226, 232, 240, 0.9);
+        background: rgba(255, 230, 238, 0.96);
+        border-bottom-color: rgba(244, 114, 182, 0.3);
       }
 
       .header-robot-icon {
-        background: linear-gradient(135deg, rgba(147, 51, 234, 0.12), rgba(6, 182, 212, 0.12));
-        border-color: rgba(147, 51, 234, 0.25);
-        color: #7C3AED;
+        background: linear-gradient(135deg, rgba(244, 114, 182, 0.25), rgba(219, 39, 119, 0.2));
+        border-color: rgba(244, 114, 182, 0.4);
+        color: #DB2777;
       }
 
       .header-title {
-        color: #0F172A;
+        color: #1F2937;
       }
 
       .status-pulse {
-        background: #059669;
-        box-shadow: 0 0 6px #10B981;
+        background: #E11D48;
+        box-shadow: 0 0 6px #FB7185;
       }
 
       .status-text {
-        color: #475569;
+        color: #6B7280;
       }
 
       .tier-badge {
-        background: rgba(16, 185, 129, 0.1);
-        border-color: rgba(16, 185, 129, 0.25);
-        color: #047857;
+        background: rgba(225, 29, 72, 0.1);
+        border-color: rgba(225, 29, 72, 0.25);
+        color: #E11D48;
       }
 
       .btn-icon-header {
-        border-color: rgba(203, 213, 225, 0.8);
-        color: #64748B;
+        border-color: rgba(244, 114, 182, 0.4);
+        color: #881337;
 
         &:hover {
-          color: #0F172A;
-          background: #F1F5F9;
-          border-color: #94A3B8;
+          color: #E11D48;
+          background: #FFE4E9;
+          border-color: rgba(225, 29, 72, 0.4);
         }
       }
 
@@ -863,139 +863,139 @@ import { AssistantService, ChatMessage } from '../../../../core/services/assista
       }
 
       .prompt-chips-bar {
-        background: rgba(248, 250, 252, 0.85);
-        border-bottom-color: rgba(226, 232, 240, 0.9);
+        background: rgba(255, 236, 242, 0.88);
+        border-bottom-color: rgba(244, 114, 182, 0.25);
       }
 
       .chips-label {
-        color: #7C3AED;
+        color: #DB2777;
       }
 
       .prompt-chip {
-        background: #FFFFFF;
-        border-color: rgba(147, 51, 234, 0.25);
-        color: #475569;
-        box-shadow: 0 1px 3px rgba(15, 23, 42, 0.05);
+        background: #FFF5F8;
+        border-color: rgba(244, 114, 182, 0.35);
+        color: #881337;
+        box-shadow: 0 1px 3px rgba(225, 29, 72, 0.05);
 
         &:hover:not(:disabled) {
-          border-color: #7C3AED;
-          background: rgba(147, 51, 234, 0.08);
-          color: #6D28D9;
+          border-color: #DB2777;
+          background: #FFE4E9;
+          color: #9F1239;
         }
       }
 
       .messages-scroll {
-        scrollbar-color: rgba(147, 51, 234, 0.4) transparent;
+        scrollbar-color: rgba(244, 114, 182, 0.4) transparent;
 
         &::-webkit-scrollbar-thumb {
-          background: rgba(147, 51, 234, 0.3);
+          background: rgba(244, 114, 182, 0.35);
           &:hover {
-            background: rgba(147, 51, 234, 0.6);
+            background: rgba(244, 114, 182, 0.65);
           }
         }
       }
 
       .btn-scroll-bottom {
-        background: #FFFFFF;
-        border-color: rgba(147, 51, 234, 0.3);
-        color: #1E293B;
-        box-shadow: 0 4px 14px rgba(0, 0, 0, 0.1), 0 0 10px rgba(147, 51, 234, 0.15);
+        background: #FFF5F8;
+        border-color: rgba(244, 114, 182, 0.4);
+        color: #881337;
+        box-shadow: 0 4px 14px rgba(225, 29, 72, 0.12), 0 0 10px rgba(244, 114, 182, 0.2);
 
         &:hover {
-          background: #7C3AED;
-          border-color: #7C3AED;
+          background: #DB2777;
+          border-color: #DB2777;
           color: #FFFFFF;
         }
       }
 
       .assistant-avatar {
-        background: linear-gradient(135deg, #7C3AED, #9333EA);
+        background: linear-gradient(135deg, #E11D48, #DB2777);
         color: #FFFFFF;
-        box-shadow: 0 4px 10px rgba(124, 58, 237, 0.3);
+        box-shadow: 0 4px 10px rgba(219, 39, 119, 0.3);
       }
 
       .user-avatar {
-        background: #0F172A;
+        background: #1F2937;
         color: #FFFFFF;
-        border-color: #1E293B;
+        border-color: #374151;
       }
 
       .assistant-row .message-bubble {
-        background: #F8FAFC;
-        border-color: #E2E8F0;
-        color: #1E293B;
-        box-shadow: 0 2px 6px rgba(15, 23, 42, 0.04);
+        background: #FFF5F8;
+        border-color: rgba(244, 114, 182, 0.3);
+        color: #1F2937;
+        box-shadow: 0 2px 6px rgba(225, 29, 72, 0.04);
 
         ::ng-deep strong {
-          color: #0F172A;
+          color: #881337;
         }
 
         ::ng-deep a {
-          color: #7C3AED;
-          &:hover { color: #6D28D9; }
+          color: #DB2777;
+          &:hover { color: #BE185D; }
         }
 
         ::ng-deep code {
-          background: #F1F5F9;
-          border: 1px solid #E2E8F0;
-          color: #7C3AED;
+          background: #FFE4E9;
+          border: 1px solid rgba(244, 114, 182, 0.35);
+          color: #BE185D;
           padding: 0.15rem 0.35rem;
           border-radius: 4px;
         }
 
         ::ng-deep pre {
-          background: #0F172A;
-          color: #F8FAFC;
-          border: 1px solid #1E293B;
+          background: #1F2937;
+          color: #FFF5F8;
+          border: 1px solid #374151;
           border-radius: 8px;
         }
 
         ::ng-deep blockquote {
-          border-left-color: #7C3AED;
-          color: #475569;
+          border-left-color: #DB2777;
+          color: #4B5563;
         }
       }
 
       .user-row .message-bubble {
-        background: linear-gradient(135deg, #7C3AED, #9333EA);
-        border: 1px solid rgba(124, 58, 237, 0.5);
+        background: linear-gradient(135deg, #E11D48, #DB2777);
+        border: 1px solid rgba(225, 29, 72, 0.5);
         color: #FFFFFF;
-        box-shadow: 0 4px 12px rgba(124, 58, 237, 0.25);
+        box-shadow: 0 4px 12px rgba(219, 39, 119, 0.25);
 
         ::ng-deep strong {
           color: #FFFFFF;
         }
 
         ::ng-deep a {
-          color: #F0ABFC;
+          color: #FFE4E9;
         }
       }
 
       .assistant-row .message-time,
       .user-row .message-time {
-        color: #94A3B8;
+        color: #9F7182;
       }
 
       .action-pill {
-        background: rgba(2, 132, 199, 0.08);
-        border-color: rgba(2, 132, 199, 0.3);
-        color: #0284C7;
+        background: rgba(225, 29, 72, 0.08);
+        border-color: rgba(225, 29, 72, 0.3);
+        color: #E11D48;
 
         &:hover {
-          background: rgba(2, 132, 199, 0.18);
-          border-color: #0284C7;
-          color: #0369A1;
+          background: rgba(225, 29, 72, 0.18);
+          border-color: #E11D48;
+          color: #BE123C;
         }
       }
 
       .typing-bubble {
-        background: #F8FAFC;
-        border-color: #E2E8F0;
-        color: #64748B;
+        background: #FFF5F8;
+        border-color: rgba(244, 114, 182, 0.3);
+        color: #6B7280;
       }
 
       .typing-dot {
-        background: #7C3AED;
+        background: #DB2777;
       }
 
       .error-banner {
@@ -1012,49 +1012,49 @@ import { AssistantService, ChatMessage } from '../../../../core/services/assista
       }
 
       .input-container {
-        background: rgba(248, 250, 252, 0.95);
-        border-top-color: #E2E8F0;
+        background: rgba(255, 235, 242, 0.96);
+        border-top-color: rgba(244, 114, 182, 0.3);
       }
 
       .input-wrapper {
-        background: #FFFFFF;
-        border-color: #CBD5E1;
-        box-shadow: 0 2px 6px rgba(15, 23, 42, 0.04);
+        background: #FFF8FA;
+        border-color: rgba(244, 114, 182, 0.35);
+        box-shadow: 0 2px 6px rgba(225, 29, 72, 0.04);
 
         &:focus-within {
-          border-color: #7C3AED;
-          box-shadow: 0 0 0 3px rgba(124, 58, 237, 0.15);
+          border-color: #DB2777;
+          box-shadow: 0 0 0 3px rgba(219, 39, 119, 0.18);
         }
       }
 
       .chat-input {
-        color: #0F172A;
+        color: #1F2937;
         &::placeholder {
-          color: #94A3B8;
+          color: #9F7182;
         }
       }
 
       .char-count {
-        color: #94A3B8;
+        color: #9F7182;
         &.warn { color: #D97706; }
       }
 
       .send-btn {
-        background: linear-gradient(135deg, #7C3AED, #9333EA);
+        background: linear-gradient(135deg, #E11D48, #DB2777);
         color: #FFFFFF;
 
         &:hover:not(:disabled) {
-          box-shadow: 0 4px 12px rgba(124, 58, 237, 0.35);
+          box-shadow: 0 4px 12px rgba(219, 39, 119, 0.4);
         }
       }
 
       .input-hints {
-        color: #94A3B8;
+        color: #9F7182;
 
         kbd {
-          background: #F1F5F9;
-          border-color: #CBD5E1;
-          color: #475569;
+          background: #FFE4E9;
+          border-color: rgba(244, 114, 182, 0.4);
+          color: #881337;
         }
       }
     }

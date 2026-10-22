@@ -48,10 +48,10 @@ interface Node {
 
     :host-context([data-theme="light"]) .cyber-grid {
       background-image:
-        linear-gradient(rgba(99, 102, 241, 0.04) 1px, transparent 1px),
-        linear-gradient(90deg, rgba(99, 102, 241, 0.04) 1px, transparent 1px);
+        linear-gradient(rgba(244, 114, 182, 0.08) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(244, 114, 182, 0.08) 1px, transparent 1px);
       background-size: 44px 44px;
-      opacity: 0.6;
+      opacity: 0.8;
       mask-image: radial-gradient(ellipse 75% 60% at 50% 25%, black 40%, transparent 85%);
       -webkit-mask-image: radial-gradient(ellipse 75% 60% at 50% 25%, black 40%, transparent 85%);
     }
@@ -123,7 +123,7 @@ export class NeuralBackgroundComponent implements OnInit, AfterViewInit, OnDestr
   private mouse = { x: -1000, y: -1000, active: false };
 
   private readonly darkColors = ['#818CF8', '#A855F7', '#22D3EE', '#6366F1'];
-  private readonly lightColors = ['#4F46E5', '#7C3AED', '#0284C7', '#DB2777'];
+  private readonly lightColors = ['#E11D48', '#DB2777', '#F472B6', '#C026D3'];
 
   ngOnInit(): void {}
 

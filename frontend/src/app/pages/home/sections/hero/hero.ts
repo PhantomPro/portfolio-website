@@ -136,7 +136,7 @@ import { Profile } from '../../../../core/models/profile.model';
     }
 
     :host-context([data-theme="light"]) .hero-glow {
-      background: radial-gradient(ellipse at 50% 20%, rgba(99, 102, 241, 0.12) 0%, rgba(168, 85, 247, 0.06) 45%, transparent 70%);
+      background: radial-gradient(ellipse at 50% 20%, rgba(244, 114, 182, 0.25) 0%, rgba(251, 113, 133, 0.1) 45%, transparent 70%);
     }
 
     .hero-container {
@@ -395,57 +395,57 @@ import { Profile } from '../../../../core/models/profile.model';
       @media (max-width: 1024px) { display: none; }
     }
 
-    /* Light Mode Terminal Refinement */
+    /* Light Mode Baby Pink Terminal Refinement */
     :host-context([data-theme="light"]) .terminal-window {
-      background: #FFFFFF;
-      border: 1px solid rgba(226, 232, 240, 0.95);
+      background: #FFF5F8;
+      border: 1px solid rgba(244, 114, 182, 0.35);
       box-shadow:
         0 1px 1px rgba(255, 255, 255, 1) inset,
-        0 20px 45px -10px rgba(79, 70, 229, 0.15),
-        0 10px 20px -5px rgba(15, 23, 42, 0.05);
+        0 20px 45px -10px rgba(225, 29, 72, 0.12),
+        0 10px 20px -5px rgba(244, 114, 182, 0.1);
 
       .terminal-header {
-        background: #F8FAFC;
-        border-bottom: 1px solid rgba(226, 232, 240, 0.9);
+        background: #FFE8EE;
+        border-bottom: 1px solid rgba(244, 114, 182, 0.3);
       }
 
       .terminal-title {
-        color: #475569;
+        color: #881337;
         font-weight: 600;
       }
 
       .terminal-badge {
-        background: rgba(99, 102, 241, 0.08);
-        border: 1px solid rgba(99, 102, 241, 0.22);
-        color: #4338CA;
+        background: rgba(225, 29, 72, 0.1);
+        border: 1px solid rgba(225, 29, 72, 0.25);
+        color: #E11D48;
       }
 
       .prompt-line {
-        border-bottom: 1px dashed rgba(15, 23, 42, 0.08);
+        border-bottom: 1px dashed rgba(244, 114, 182, 0.3);
       }
 
       .token-prompt { color: #059669; font-weight: 700; }
-      .token-command { color: #0284C7; font-weight: 600; }
-      .token-flag { color: #D946EF; }
-      .token-comment { color: #94A3B8; font-style: italic; }
+      .token-command { color: #E11D48; font-weight: 600; }
+      .token-flag { color: #DB2777; }
+      .token-comment { color: #9F7182; font-style: italic; }
 
-      .token-keyword { color: #7C3AED; font-weight: 600; }
+      .token-keyword { color: #C026D3; font-weight: 600; }
       .token-type { color: #D97706; }
       .token-string { color: #059669; }
-      .token-property { color: #2563EB; }
-      .token-variable { color: #0F172A; }
-      .token-function { color: #4F46E5; }
+      .token-property { color: #DB2777; }
+      .token-variable { color: #1F2937; }
+      .token-function { color: #E11D48; }
     }
 
     :host-context([data-theme="light"]) .floating-badge {
-      background: rgba(255, 255, 255, 0.94);
-      border: 1px solid rgba(226, 232, 240, 0.95);
-      box-shadow: 0 10px 25px -4px rgba(79, 70, 229, 0.12), 0 4px 6px -2px rgba(15, 23, 42, 0.04);
-      color: #0F172A;
+      background: rgba(255, 245, 248, 0.95);
+      border: 1px solid rgba(244, 114, 182, 0.35);
+      box-shadow: 0 10px 25px -4px rgba(225, 29, 72, 0.1), 0 4px 6px -2px rgba(244, 114, 182, 0.08);
+      color: #1F2937;
 
       &:hover {
-        border-color: rgba(99, 102, 241, 0.4);
-        box-shadow: 0 16px 32px -4px rgba(79, 70, 229, 0.2);
+        border-color: rgba(225, 29, 72, 0.45);
+        box-shadow: 0 16px 32px -4px rgba(244, 114, 182, 0.25);
       }
     }
 

@@ -370,23 +370,41 @@ interface NavLink {
     }
 
     :host-context([data-theme="light"]) .navbar.scrolled {
-      background: rgba(255, 255, 255, 0.88);
-      border-bottom: 1px solid rgba(226, 232, 240, 0.9);
-      box-shadow: 0 4px 20px -2px rgba(15, 23, 42, 0.04);
+      background: rgba(255, 240, 245, 0.92);
+      border-bottom: 1px solid rgba(244, 114, 182, 0.3);
+      box-shadow: 0 4px 20px -2px rgba(225, 29, 72, 0.08);
     }
 
     :host-context([data-theme="light"]) .icon-btn {
-      background: rgba(255, 255, 255, 0.9);
-      border: 1px solid rgba(203, 213, 225, 0.8);
-      color: #334155;
-      box-shadow: 0 1px 2px rgba(15, 23, 42, 0.04);
+      background: rgba(255, 245, 248, 0.95);
+      border: 1px solid rgba(244, 114, 182, 0.35);
+      color: #881337;
+      box-shadow: 0 1px 2px rgba(225, 29, 72, 0.06);
 
       &:hover {
-        background: #FFFFFF;
-        border-color: rgba(99, 102, 241, 0.45);
-        color: #4F46E5;
-        box-shadow: 0 4px 12px rgba(79, 70, 229, 0.12);
+        background: #FFE4E9;
+        border-color: rgba(225, 29, 72, 0.45);
+        color: #E11D48;
+        box-shadow: 0 4px 12px rgba(244, 114, 182, 0.2);
       }
+    }
+
+    :host-context([data-theme="light"]) .ai-robot-btn {
+      border-color: rgba(244, 114, 182, 0.4);
+      color: #DB2777;
+      background: rgba(255, 245, 248, 0.95);
+
+      &:hover, &.active {
+        color: #BE123C;
+        border-color: #E11D48;
+        background: #FFE4E9;
+        box-shadow: 0 0 16px rgba(244, 114, 182, 0.45);
+      }
+    }
+
+    :host-context([data-theme="light"]) .mobile-ai-action .mobile-ai-btn {
+      background: linear-gradient(135deg, #E11D48, #DB2777);
+      box-shadow: 0 4px 14px rgba(225, 29, 72, 0.3);
     }
 
     /* Accessible 44px touch target Hamburger */

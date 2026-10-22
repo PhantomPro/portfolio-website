@@ -41,8 +41,7 @@ import { AssistantService, ChatMessage } from '../../../../core/services/assista
                 <h3 id="ai-chat-title" class="header-title">Ask Tanmay AI</h3>
                 <div class="terminal-status">
                   <span class="status-pulse" aria-hidden="true"></span>
-                  <span class="status-text">Gemini 3.5 Flash</span>
-                  <span class="tier-badge">Live</span>
+                  <span class="status-text">Online</span>
                 </div>
               </div>
             </div>
@@ -123,9 +122,6 @@ import { AssistantService, ChatMessage } from '../../../../core/services/assista
                   <!-- Metadata footer -->
                   <div class="message-meta">
                     <span class="meta-time">{{ msg.timestamp | date:'shortTime' }}</span>
-                    @if (msg.model && msg.role === 'assistant') {
-                      <span class="meta-model">• {{ msg.model }}</span>
-                    }
                   </div>
 
                   <!-- Suggested Action Pills -->
@@ -155,7 +151,7 @@ import { AssistantService, ChatMessage } from '../../../../core/services/assista
                   <span class="typing-dot"></span>
                   <span class="typing-dot"></span>
                   <span class="typing-dot"></span>
-                  <span class="typing-label">Gemini is synthesizing...</span>
+                  <span class="typing-label">Synthesizing response...</span>
                 </div>
               </div>
             }
@@ -177,7 +173,7 @@ import { AssistantService, ChatMessage } from '../../../../core/services/assista
                 #inputField
                 rows="1"
                 class="chat-input"
-                placeholder="Ask about Tanmay's experience, VS Code AI plugin, projects..."
+                placeholder="Ask anything about Tanmay..."
                 [(ngModel)]="userInput"
                 (keydown)="onKeydown($event)"
                 (input)="autoGrow($event)"
@@ -209,7 +205,6 @@ import { AssistantService, ChatMessage } from '../../../../core/services/assista
 
             <div class="input-hints">
               <span>Press <kbd>Enter</kbd> to send</span>
-              <span class="api-disclaimer">Zero credentials exposed • Server-side Gemini</span>
             </div>
           </div>
         </div>
@@ -654,15 +649,17 @@ import { AssistantService, ChatMessage } from '../../../../core/services/assista
       background: transparent;
       border: none;
       outline: none;
-      padding: 0.65rem 0.85rem;
+      padding: 0.75rem 0.85rem;
       color: #F8FAFC;
-      font-size: 0.85rem;
+      font-size: 0.88rem;
       line-height: 1.45;
+      min-height: 40px;
       resize: none;
       font-family: inherit;
 
       &::placeholder {
-        color: #64748B;
+        color: #94A3B8;
+        opacity: 0.9;
       }
     }
 

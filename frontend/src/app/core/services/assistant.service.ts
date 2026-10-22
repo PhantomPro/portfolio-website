@@ -29,11 +29,10 @@ const INITIAL_GREETING: ChatMessage = {
   id: 'msg_welcome',
   role: 'assistant',
   text:
-    'Hi! I’m Tanmay’s **Portfolio AI Assistant**, powered by **Google Gemini**.\n\n' +
+    'Hi! I’m Tanmay’s **Portfolio AI Assistant**.\n\n' +
     'Ask me anything about Tanmay’s **software engineering experience at Ascendion**, his **VS Code AI coding assistant**, **projects**, or **technical stack**.\n\n' +
     'Try one of the suggested prompts below, or ask your own question!',
   timestamp: new Date(),
-  model: 'gemini-2.5-flash',
   grounded: true,
   suggestedActions: [
     { label: 'View Projects', action: 'navigate', target: 'projects' },

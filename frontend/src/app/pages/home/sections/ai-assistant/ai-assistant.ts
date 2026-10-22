@@ -15,29 +15,6 @@ import { AssistantService, ChatMessage } from '../../../../core/services/assista
   standalone: true,
   imports: [CommonModule, FormsModule],
   template: `
-    <!-- Floating Action Button (when closed) -->
-    @if (!assistantService.isOpen()) {
-      <button
-        class="ai-fab-pill"
-        (click)="assistantService.open()"
-        aria-label="Open AI Assistant Chat"
-        title="Ask Tanmay's AI Assistant"
-      >
-        <span class="fab-icon-wrapper">
-          <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
-            <rect x="3" y="11" width="18" height="10" rx="2"/>
-            <circle cx="12" cy="5" r="2"/>
-            <path d="M12 7v4"/>
-            <line x1="8" y1="16" x2="8" y2="16"/>
-            <line x1="16" y1="16" x2="16" y2="16"/>
-          </svg>
-          <span class="fab-live-dot" aria-hidden="true"></span>
-        </span>
-        <span class="fab-text">Ask Tanmay AI</span>
-        <span class="fab-sparkle" aria-hidden="true">✨</span>
-      </button>
-    }
-
     <!-- Floating Chat Window (when open) -->
     @if (assistantService.isOpen()) {
       <div
@@ -245,78 +222,9 @@ import { AssistantService, ChatMessage } from '../../../../core/services/assista
       font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
     }
 
-    /* Floating Action Pill Button */
-    .ai-fab-pill {
-      position: fixed;
-      bottom: 24px;
-      right: 24px;
-      z-index: 9998;
-      display: flex;
-      align-items: center;
-      gap: 0.65rem;
-      padding: 0.75rem 1.25rem;
-      border-radius: 9999px;
-      border: 1px solid rgba(168, 85, 247, 0.45);
-      background: rgba(10, 10, 24, 0.92);
-      backdrop-filter: blur(16px);
-      -webkit-backdrop-filter: blur(16px);
-      color: #F8FAFC;
-      font-size: 0.9rem;
-      font-weight: 600;
-      letter-spacing: -0.01em;
-      cursor: pointer;
-      box-shadow: 0 8px 32px -4px rgba(0, 0, 0, 0.6), 0 0 24px rgba(168, 85, 247, 0.35);
-      transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
-      touch-action: manipulation;
-
-      &:hover {
-        transform: translateY(-3px) scale(1.02);
-        border-color: #A855F7;
-        box-shadow: 0 12px 36px -4px rgba(0, 0, 0, 0.7), 0 0 32px rgba(168, 85, 247, 0.55);
-        color: #FFFFFF;
-      }
-
-      .fab-icon-wrapper {
-        position: relative;
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        color: #C084FC;
-      }
-
-      .fab-live-dot {
-        position: absolute;
-        top: -2px;
-        right: -2px;
-        width: 7px;
-        height: 7px;
-        border-radius: 50%;
-        background: #10B981;
-        box-shadow: 0 0 6px #10B981;
-        animation: fab-dot-pulse 2s infinite ease-in-out;
-      }
-
-      .fab-sparkle {
-        font-size: 0.85rem;
-        animation: sparkle-rotate 3s infinite ease-in-out;
-      }
-
-      @media (max-width: 600px) {
-        bottom: 20px;
-        right: 16px;
-        padding: 0.65rem 1rem;
-        font-size: 0.85rem;
-      }
-    }
-
     @keyframes fab-dot-pulse {
       0%, 100% { opacity: 1; transform: scale(1); }
       50% { opacity: 0.4; transform: scale(0.8); }
-    }
-
-    @keyframes sparkle-rotate {
-      0%, 100% { transform: scale(1) rotate(0deg); }
-      50% { transform: scale(1.2) rotate(15deg); }
     }
 
     /* Floating Chat Drawer Container */

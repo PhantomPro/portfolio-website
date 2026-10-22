@@ -119,15 +119,6 @@ interface NavLink {
             </svg>
           </a>
 
-          <!-- Resume -->
-          <a
-            [href]="resumeUrl"
-            target="_blank"
-            rel="noopener noreferrer"
-            class="btn btn-secondary btn-sm resume-btn"
-            aria-label="View Resume (PDF)"
-          >Resume ↗</a>
-
           <!-- Mobile hamburger -->
           <button
             class="hamburger"

@@ -262,6 +262,7 @@ import { AssistantService, ChatMessage } from '../../../../core/services/assista
     .chat-terminal-drawer {
       width: 100%;
       height: 100%;
+      min-height: 0;
       display: flex;
       flex-direction: column;
       border-radius: 18px;
@@ -442,15 +443,31 @@ import { AssistantService, ChatMessage } from '../../../../core/services/assista
 
     /* Messages Scroll Area */
     .messages-scroll {
-      flex: 1;
+      flex: 1 1 0px;
+      min-height: 0;
       overflow-y: auto;
+      overflow-x: hidden;
       overscroll-behavior: contain;
       padding: 1rem;
       display: flex;
       flex-direction: column;
       gap: 1rem;
       scrollbar-width: thin;
-      scrollbar-color: rgba(168, 85, 247, 0.3) transparent;
+      scrollbar-color: rgba(168, 85, 247, 0.4) transparent;
+
+      &::-webkit-scrollbar {
+        width: 6px;
+      }
+      &::-webkit-scrollbar-track {
+        background: transparent;
+      }
+      &::-webkit-scrollbar-thumb {
+        background: rgba(168, 85, 247, 0.35);
+        border-radius: 9999px;
+        &:hover {
+          background: rgba(168, 85, 247, 0.65);
+        }
+      }
     }
 
     .message-row {
@@ -817,7 +834,14 @@ import { AssistantService, ChatMessage } from '../../../../core/services/assista
       }
 
       .messages-scroll {
-        scrollbar-color: rgba(147, 51, 234, 0.25) transparent;
+        scrollbar-color: rgba(147, 51, 234, 0.4) transparent;
+
+        &::-webkit-scrollbar-thumb {
+          background: rgba(147, 51, 234, 0.3);
+          &:hover {
+            background: rgba(147, 51, 234, 0.6);
+          }
+        }
       }
 
       .assistant-avatar {
@@ -980,6 +1004,9 @@ export class AiAssistantComponent implements AfterViewChecked {
 
   userInput = '';
 
+  private prevMessageCount = 0;
+  private prevLoading = false;
+
   readonly suggestedPrompts = [
     'What projects has Tanmay built?',
     'Explain his VS Code AI coding assistant.',
@@ -989,12 +1016,6 @@ export class AiAssistantComponent implements AfterViewChecked {
     'Why should we hire Tanmay?',
   ];
 
-  @HostListener('wheel', ['$event'])
-  onWheel(event: WheelEvent): void {
-    // Prevent background page from scrolling when cursor is over the chat drawer
-    event.stopPropagation();
-  }
-
   @HostListener('document:keydown.escape')
   onEscape(): void {
     if (this.assistantService.isOpen()) {
@@ -1003,7 +1024,13 @@ export class AiAssistantComponent implements AfterViewChecked {
   }
 
   ngAfterViewChecked(): void {
-    this.scrollToBottom();
+    const currentCount = this.assistantService.messages().length;
+    const currentLoading = this.assistantService.isLoading();
+    if (currentCount !== this.prevMessageCount || currentLoading !== this.prevLoading) {
+      this.prevMessageCount = currentCount;
+      this.prevLoading = currentLoading;
+      this.scrollToBottom();
+    }
   }
 
   handleSend(): void {
@@ -1079,11 +1106,15 @@ export class AiAssistantComponent implements AfterViewChecked {
   }
 
   private scrollToBottom(): void {
-    try {
-      if (this.messagesContainer?.nativeElement) {
-        this.messagesContainer.nativeElement.scrollTop =
-          this.messagesContainer.nativeElement.scrollHeight;
-      }
-    } catch (_) {}
+    setTimeout(() => {
+      try {
+        if (this.messagesContainer?.nativeElement) {
+          this.messagesContainer.nativeElement.scrollTo({
+            top: this.messagesContainer.nativeElement.scrollHeight,
+            behavior: 'smooth',
+          });
+        }
+      } catch (_) {}
+    }, 60);
   }
 }

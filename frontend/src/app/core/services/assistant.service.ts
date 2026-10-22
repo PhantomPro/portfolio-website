@@ -291,6 +291,64 @@ export class AssistantService {
       };
     }
 
+    if (q.includes('hire') || q.includes('strength') || q.includes('why should') || q.includes('fit') || q.includes('candidate')) {
+      return {
+        success: true,
+        data: {
+          reply:
+            'You should consider Tanmay Basu for engineering roles for several key reasons:\n\n' +
+            '- **AI & Full-Stack Expertise:** At Ascendion, Tanmay engineers AI-powered developer tooling, including a VS Code AI assistant extension with FastAPI microservices and LLM context workflows ([View Experience](#experience)).\n' +
+            '- **Modern Tech Stack:** 2+ years of production experience across TypeScript, Angular 17+, React, Node.js, Python, PostgreSQL, and GraphQL ([View Skills](#skills)).\n' +
+            '- **Enterprise UI & Performance:** Contributed to Ascendion’s generative AI Experience Studio (AAVA Design System), building reusable design systems and reducing API latency by 35%.\n' +
+            '- **Strong CS Fundamentals:** 350+ algorithmic coding problems solved on LeetCode/GFG and a B.Tech in CSE from VIT Bhopal (CGPA: 8.0).\n\n' +
+            'Feel free to explore his [Projects](#projects) or reach out via [Contact](#contact).',
+          model: 'gemini-grounded-client',
+          grounded: true,
+          suggestedActions: [
+            { label: 'View Experience', action: 'navigate', target: 'experience' },
+            { label: 'View Projects', action: 'navigate', target: 'projects' },
+            { label: 'View Skills', action: 'navigate', target: 'skills' },
+          ],
+        },
+      };
+    }
+
+    if (q.includes('who is') || q.includes('about tanmay') || q.includes('background') || q.includes('summary') || q.includes('profile')) {
+      return {
+        success: true,
+        data: {
+          reply:
+            '**Tanmay Basu** is a Full Stack Developer & Associate Engineer at Ascendion (Hyderabad, India) with 2+ years of engineering experience.\n\n' +
+            'He specializes in building high-performance web applications, generative AI extensions, and scalable microservices across TypeScript, Angular, React, Node.js, Python, and FastAPI.\n\n' +
+            'He graduated with a B.Tech in Computer Science from VIT Bhopal (CGPA 8.0/10). Discover more in his [About](#about) and [Experience](#experience) sections.',
+          model: 'gemini-grounded-client',
+          grounded: true,
+          suggestedActions: [
+            { label: 'View About', action: 'navigate', target: 'about' },
+            { label: 'View Experience', action: 'navigate', target: 'experience' },
+          ],
+        },
+      };
+    }
+
+    if (q.includes('contact') || q.includes('email') || q.includes('phone') || q.includes('linkedin') || q.includes('github') || q.includes('reach')) {
+      return {
+        success: true,
+        data: {
+          reply:
+            'You can connect with Tanmay Basu through:\n\n' +
+            '- **Email**: basutanmay.007@gmail.com\n' +
+            '- **LinkedIn**: [linkedin.com/in/tanmay-basu-9310b01a1](https://www.linkedin.com/in/tanmay-basu-9310b01a1/)\n' +
+            '- **GitHub**: [github.com/PhantomPro](https://github.com/PhantomPro)\n' +
+            '- **Location**: Hyderabad, India\n\n' +
+            'Or send a direct message in the [Contact Section](#contact).',
+          model: 'gemini-grounded-client',
+          grounded: true,
+          suggestedActions: [{ label: 'Go to Contact', action: 'navigate', target: 'contact' }],
+        },
+      };
+    }
+
     return {
       success: true,
       data: {

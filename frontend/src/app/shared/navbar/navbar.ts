@@ -8,6 +8,7 @@ import {
 } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { ThemeService } from '../../core/services/theme.service';
+import { AssistantService } from '../../core/services/assistant.service';
 
 interface NavLink {
   label: string;
@@ -52,6 +53,24 @@ interface NavLink {
 
         <!-- Right actions -->
         <div class="nav-actions">
+          <!-- AI Assistant Robot Button -->
+          <button
+            class="icon-btn ai-robot-btn"
+            [class.active]="assistantService.isOpen()"
+            (click)="assistantService.toggle()"
+            aria-label="Ask Tanmay AI Assistant"
+            title="Ask Tanmay's AI Assistant"
+          >
+            <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+              <rect x="3" y="11" width="18" height="10" rx="2"/>
+              <circle cx="12" cy="5" r="2"/>
+              <path d="M12 7v4"/>
+              <line x1="8" y1="16" x2="8" y2="16"/>
+              <line x1="16" y1="16" x2="16" y2="16"/>
+            </svg>
+            <span class="ai-live-pulse" title="Gemini 3.5 Flash Online"></span>
+          </button>
+
           <!-- Theme toggle -->
           <button
             class="icon-btn theme-toggle-btn"
@@ -137,6 +156,13 @@ interface NavLink {
               >{{ link.label }}</a>
             </li>
           }
+          <li class="mobile-ai-action">
+            <button class="btn btn-primary mobile-ai-btn" (click)="assistantService.open(); closeMenu()">
+              <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="11" width="18" height="10" rx="2"/><circle cx="12" cy="5" r="2"/><path d="M12 7v4"/><line x1="8" y1="16" x2="8" y2="16"/><line x1="16" y1="16" x2="16" y2="16"/></svg>
+              <span>Ask AI Assistant</span>
+              <span class="ai-chip-tag">Live</span>
+            </button>
+          </li>
           <li class="mobile-resume">
             <a
               [href]="resumeUrl"
@@ -271,6 +297,67 @@ interface NavLink {
       @media (max-width: 600px) { width: 38px; height: 38px; min-width: 38px; min-height: 38px; }
     }
 
+    .ai-robot-btn {
+      position: relative;
+      border-color: rgba(168, 85, 247, 0.4);
+      color: #A855F7;
+
+      &:hover, &.active {
+        color: #C084FC;
+        border-color: #A855F7;
+        background: rgba(168, 85, 247, 0.15);
+        box-shadow: 0 0 16px rgba(168, 85, 247, 0.35);
+        transform: translateY(-1px);
+      }
+
+      .ai-live-pulse {
+        position: absolute;
+        top: 6px;
+        right: 6px;
+        width: 7px;
+        height: 7px;
+        border-radius: 50%;
+        background: #10B981;
+        box-shadow: 0 0 6px #10B981;
+        animation: ai-dot-pulse 2s infinite ease-in-out;
+      }
+    }
+
+    @keyframes ai-dot-pulse {
+      0%, 100% { opacity: 1; transform: scale(1); }
+      50% { opacity: 0.4; transform: scale(0.8); }
+    }
+
+    .mobile-ai-action {
+      padding: 0.75rem 2rem;
+      .mobile-ai-btn {
+        width: 100%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        gap: 0.5rem;
+        background: linear-gradient(135deg, #7C3AED, #A855F7);
+        border: none;
+        border-radius: 10px;
+        padding: 0.65rem 1rem;
+        font-weight: 600;
+        font-size: 0.9rem;
+        color: #fff;
+        cursor: pointer;
+
+        .ai-chip-tag {
+          font-size: 0.65rem;
+          background: rgba(16, 185, 129, 0.25);
+          color: #10B981;
+          padding: 0.1rem 0.4rem;
+          border-radius: 9999px;
+          border: 1px solid rgba(16, 185, 129, 0.4);
+          font-weight: 700;
+          text-transform: uppercase;
+        }
+      }
+    }
+
     .theme-toggle-btn.ai-active {
       color: var(--accent-primary);
       border-color: var(--border-accent);
@@ -401,6 +488,7 @@ interface NavLink {
 })
 export class NavbarComponent implements OnInit, OnDestroy {
   protected readonly themeService = inject(ThemeService);
+  protected readonly assistantService = inject(AssistantService);
 
   readonly isScrolled = signal(false);
   readonly menuOpen = signal(false);
@@ -413,12 +501,11 @@ export class NavbarComponent implements OnInit, OnDestroy {
     { label: 'Skills', href: '#skills' },
     { label: 'Experience', href: '#experience' },
     { label: 'Projects', href: '#projects' },
-    { label: 'AI Assistant', href: '#ai-assistant' },
     { label: 'Achievements', href: '#achievements' },
     { label: 'Contact', href: '#contact' },
   ];
 
-  private sectionIds = ['home', 'about', 'skills', 'experience', 'projects', 'ai-assistant', 'achievements', 'contact'];
+  private sectionIds = ['home', 'about', 'skills', 'experience', 'projects', 'achievements', 'contact'];
 
   ngOnInit(): void {
     // Initial active section calculation

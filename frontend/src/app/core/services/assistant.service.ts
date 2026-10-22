@@ -50,6 +50,19 @@ export class AssistantService {
   readonly isLoading = signal<boolean>(false);
   readonly error = signal<string | null>(null);
   readonly activeHighlight = signal<string | null>(null);
+  readonly isOpen = signal<boolean>(false);
+
+  open(): void {
+    this.isOpen.set(true);
+  }
+
+  close(): void {
+    this.isOpen.set(false);
+  }
+
+  toggle(): void {
+    this.isOpen.update((v) => !v);
+  }
 
   /**
    * Send a query to the AI Assistant
@@ -147,17 +160,17 @@ export class AssistantService {
   }
 
   askAboutProject(title: string): void {
-    this.scrollToAssistant();
+    this.open();
     setTimeout(() => {
       this.sendMessage(`Explain Tanmay's ${title} project and its architecture.`);
-    }, 400);
+    }, 200);
   }
 
   askAboutSkill(skillName: string): void {
-    this.scrollToAssistant();
+    this.open();
     setTimeout(() => {
       this.sendMessage(`Which of Tanmay's projects and experience utilize ${skillName}?`);
-    }, 400);
+    }, 200);
   }
 
   scrollToAssistant(): void {

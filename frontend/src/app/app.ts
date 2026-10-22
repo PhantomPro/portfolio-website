@@ -5,11 +5,19 @@ import { NavbarComponent } from './shared/navbar/navbar';
 import { FooterComponent } from './shared/footer/footer';
 import { ScrollToTopComponent } from './shared/components/scroll-to-top/scroll-to-top';
 import { NeuralBackgroundComponent } from './shared/components/neural-background/neural-background';
+import { AiAssistantComponent } from './pages/home/sections/ai-assistant/ai-assistant';
 
 @Component({
   selector: 'app-root',
   standalone: true,
-  imports: [RouterOutlet, NavbarComponent, FooterComponent, ScrollToTopComponent, NeuralBackgroundComponent],
+  imports: [
+    RouterOutlet,
+    NavbarComponent,
+    FooterComponent,
+    ScrollToTopComponent,
+    NeuralBackgroundComponent,
+    AiAssistantComponent,
+  ],
   template: `
     <app-neural-background />
     <div class="app-wrapper">
@@ -19,6 +27,7 @@ import { NeuralBackgroundComponent } from './shared/components/neural-background
       </main>
       <app-footer />
       <app-scroll-to-top />
+      <app-ai-assistant />
     </div>
   `,
   styles: [`

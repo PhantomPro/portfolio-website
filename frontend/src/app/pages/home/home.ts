@@ -7,7 +7,6 @@ import { ExperienceComponent } from './sections/experience/experience';
 import { ProjectsComponent } from './sections/projects/projects';
 import { AchievementsComponent } from './sections/achievements/achievements';
 import { ContactComponent } from './sections/contact/contact';
-import { AiAssistantComponent } from './sections/ai-assistant/ai-assistant';
 
 @Component({
   selector: 'app-home',
@@ -19,7 +18,6 @@ import { AiAssistantComponent } from './sections/ai-assistant/ai-assistant';
     SkillsComponent,
     ExperienceComponent,
     ProjectsComponent,
-    AiAssistantComponent,
     AchievementsComponent,
     ContactComponent,
   ],
@@ -33,8 +31,6 @@ import { AiAssistantComponent } from './sections/ai-assistant/ai-assistant';
     <app-experience />
     <div class="divider"></div>
     <app-projects />
-    <div class="divider"></div>
-    <app-ai-assistant />
     <div class="divider"></div>
     <app-achievements />
     <div class="divider"></div>

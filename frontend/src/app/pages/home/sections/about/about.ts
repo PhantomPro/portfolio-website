@@ -108,16 +108,6 @@ import { Profile } from '../../../../core/models/profile.model';
                 <div class="info-value mono" style="font-size:0.85rem;">React · Next.js · Node · FastAPI · AI</div>
               </div>
             </div>
-
-            <a
-              href="mailto:{{ profile()?.email || '[YOUR EMAIL]' }}"
-              class="btn btn-primary"
-              style="width:100%;justify-content:center;margin-top:0.5rem;"
-              aria-label="Send email"
-            >
-              <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>
-              Get In Touch
-            </a>
           </div>
         </div>
       </div>

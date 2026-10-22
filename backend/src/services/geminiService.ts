@@ -116,7 +116,7 @@ export class GeminiAssistantService {
 
     if (!trimmedMessage) {
       return {
-        reply: 'Hello! I am Tanmay Basu’s AI assistant. How can I help you explore his projects, technical skills, or engineering experience at Ascendion?',
+        reply: 'Hello! I am Tanmay Basu’s AI assistant. How can I help you explore his projects, technical skills, or professional experience?',
         model: 'system',
         grounded: true,
       };
@@ -153,7 +153,7 @@ export class GeminiAssistantService {
       if (this.isQuotaError(primaryError)) {
         return {
           reply:
-            'The Gemini free-tier rate limit has been temporarily reached. Tanmay’s portfolio is still fully interactive! You can explore his [Projects](#projects), [Experience at Ascendion](#experience), and [Technical Skills](#skills) directly.',
+            'The Gemini free-tier rate limit has been temporarily reached. Tanmay’s portfolio is still fully interactive! You can explore his [Projects](#projects), [Experience](#experience), and [Technical Skills](#skills) directly.',
           model: this.primaryModel,
           grounded: true,
           suggestedActions: [
@@ -315,7 +315,7 @@ export class GeminiAssistantService {
 
     return {
       reply:
-        'Hello! I am Tanmay Basu’s AI portfolio assistant. I can answer questions about his **experience at Ascendion**, his **projects** (like the Insurance Management App or AI Image Generator), his **AI coding assistant plugin**, and his **technical skills**.\n\n' +
+        'Hello! I am Tanmay Basu’s AI portfolio assistant. I can answer questions about his **work experience**, his **projects** (like the Insurance Management App or AI Image Generator), his **AI coding assistant plugin**, and his **technical skills**.\n\n' +
         'What would you like to know? You can also jump to:\n' +
         '- [View Projects](#projects)\n' +
         '- [View Experience](#experience)\n' +

@@ -21,10 +21,10 @@ export async function seedDatabase(): Promise<void> {
   await Profile.create({
     name: 'Tanmay Basu',
     role: 'Full Stack Developer',
-    tagline: 'Full Stack Developer & Associate Engineer at Ascendion | AI-Powered Tooling • Modern Web Apps',
+    tagline: 'Full Stack Developer & Associate Engineer | AI-Powered Tooling • Modern Web Apps',
     bio: 'Full Stack Developer and Associate Engineer at Ascendion in Hyderabad, India with hands-on experience in frontend engineering, backend services, API integration, and AI-powered developer tooling. Skilled in building user interfaces, reusable components, REST & GraphQL integrations, and full-stack applications using React, Angular, TypeScript, JavaScript, Node.js, Python/FastAPI, and databases. Experienced in troubleshooting client issues and delivering validated UI fixes across environments.',
     shortBio:
-      'Full Stack Developer at Ascendion building AI-powered developer tools, scalable web applications, and modern design systems across React, Angular, Node.js, and Python.',
+      'Full Stack Developer building AI-powered developer tools, scalable web applications, and modern design systems across React, Angular, Node.js, and Python.',
     email: 'basutanmay.007@gmail.com',
     phone: '+91 7607005541',
     location: 'Hyderabad, India',

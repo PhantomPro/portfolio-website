@@ -14,7 +14,7 @@ import { Profile } from '../../../../core/models/profile.model';
         <div class="hero-content">
           <div class="status-badge animate-on-scroll" [class.in-view]="animIn()">
             <span class="status-dot"></span>
-            <span class="mono">Neural Engine Active • Ascendion AI Engineering</span>
+            <span class="mono">Neural Engine Active • Full Stack & AI Engineering</span>
           </div>
 
           <h1 class="hero-name animate-on-scroll delay-1" [class.in-view]="animIn()">
@@ -23,11 +23,11 @@ import { Profile } from '../../../../core/models/profile.model';
           </h1>
 
           <div class="hero-role animate-on-scroll delay-2" [class.in-view]="animIn()">
-            <span class="typing-text mono">{{ currentRole() }}</span>
+            <span class="typing-text mono">{{ getCleanRole() }}</span>
           </div>
 
           <p class="hero-bio animate-on-scroll delay-3" [class.in-view]="animIn()">
-            {{ profile()?.shortBio || 'Full Stack Developer building AI-powered developer tools, scalable web applications, and modern design systems across React, Angular, Node.js, and Python.' }}
+            {{ getCleanBio() }}
           </p>
 
           <div class="hero-cta animate-on-scroll delay-4" [class.in-view]="animIn()">
@@ -69,11 +69,11 @@ import { Profile } from '../../../../core/models/profile.model';
               <span class="terminal-badge mono">AI Agent v2.5</span>
             </div>
             <div class="terminal-body">
-              <div class="code-line prompt-line"><span class="token-prompt">❯</span> <span class="token-command">ascendion-agent init --profile</span> <span class="token-flag">--ai-mode</span></div>
+              <div class="code-line prompt-line"><span class="token-prompt">❯</span> <span class="token-command">tanmay-agent init --profile</span> <span class="token-flag">--ai-mode</span></div>
               <div class="code-line"><span class="token-keyword">const</span> <span class="token-variable">developer</span> = &#123;</div>
               <div class="code-line indent"><span class="token-property">name</span>: <span class="token-string">'Tanmay Basu'</span>,</div>
               <div class="code-line indent"><span class="token-property">role</span>: <span class="token-string">'Full Stack Developer'</span>,</div>
-              <div class="code-line indent"><span class="token-property">company</span>: <span class="token-string">'Ascendion'</span>,</div>
+              <div class="code-line indent"><span class="token-property">specialty</span>: <span class="token-string">'AI Engineering & Web Apps'</span>,</div>
               <div class="code-line indent"><span class="token-property">neuralFocus</span>: <span class="token-string">'AI Tools & VS Code Extensions'</span>,</div>
               <div class="code-line indent"><span class="token-property">stack</span>: [</div>
               <div class="code-line double-indent"><span class="token-string">'React'</span>, <span class="token-string">'Angular'</span>,</div>
@@ -560,6 +560,15 @@ export class HeroComponent implements OnInit, OnDestroy {
   ngOnDestroy(): void {
     if (this.roleTimeout) clearTimeout(this.roleTimeout);
     if (this.animTimeout) clearTimeout(this.animTimeout);
+  }
+
+  getCleanRole(): string {
+    return this.currentRole().replace(/\s*(?:at|@)\s*Ascendion/gi, '');
+  }
+
+  getCleanBio(): string {
+    const raw = this.profile()?.shortBio || 'Full Stack Developer building AI-powered developer tools, scalable web applications, and modern design systems across React, Angular, Node.js, and Python.';
+    return raw.replace(/\s*(?:at|@)\s*Ascendion/gi, '');
   }
 
   scrollTo(event: Event, id: string): void {

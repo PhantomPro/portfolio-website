@@ -739,49 +739,236 @@ import { AssistantService, ChatMessage } from '../../../../core/services/assista
       to { transform: rotate(360deg); }
     }
 
-    /* Light Theme Tweaks */
+    /* Light Theme Optimization */
     :host-context([data-theme="light"]) {
-      .ai-fab-pill {
-        background: rgba(255, 255, 255, 0.95);
-        border-color: rgba(147, 51, 234, 0.4);
-        color: #1E293B;
-        box-shadow: 0 8px 30px -4px rgba(0, 0, 0, 0.15), 0 0 20px rgba(147, 51, 234, 0.2);
-        &:hover {
-          background: #FFFFFF;
-          color: #0F172A;
-        }
-      }
-
       .chat-terminal-drawer {
-        background: rgba(255, 255, 255, 0.97);
-        border-color: rgba(147, 51, 234, 0.3);
-        box-shadow: 0 20px 50px -10px rgba(0, 0, 0, 0.2), 0 0 24px rgba(147, 51, 234, 0.15);
+        background: rgba(255, 255, 255, 0.98);
+        border-color: rgba(147, 51, 234, 0.25);
+        box-shadow: 0 24px 60px -12px rgba(15, 23, 42, 0.18), 0 0 32px rgba(147, 51, 234, 0.1);
       }
 
       .terminal-header {
-        background: rgba(248, 250, 252, 0.9);
-        border-bottom-color: rgba(226, 232, 240, 0.8);
+        background: rgba(248, 250, 252, 0.95);
+        border-bottom-color: rgba(226, 232, 240, 0.9);
       }
 
-      .header-title { color: #0F172A; }
-      .message-bubble {
-        background: #F1F5F9;
+      .header-robot-icon {
+        background: linear-gradient(135deg, rgba(147, 51, 234, 0.12), rgba(6, 182, 212, 0.12));
+        border-color: rgba(147, 51, 234, 0.25);
+        color: #7C3AED;
+      }
+
+      .header-title {
+        color: #0F172A;
+      }
+
+      .status-pulse {
+        background: #059669;
+        box-shadow: 0 0 6px #10B981;
+      }
+
+      .status-text {
+        color: #475569;
+      }
+
+      .tier-badge {
+        background: rgba(16, 185, 129, 0.1);
+        border-color: rgba(16, 185, 129, 0.25);
+        color: #047857;
+      }
+
+      .btn-icon-header {
+        border-color: rgba(203, 213, 225, 0.8);
+        color: #64748B;
+
+        &:hover {
+          color: #0F172A;
+          background: #F1F5F9;
+          border-color: #94A3B8;
+        }
+      }
+
+      .btn-close-header:hover {
+        background: #FEE2E2;
+        color: #DC2626;
+        border-color: #FCA5A5;
+      }
+
+      .prompt-chips-bar {
+        background: rgba(248, 250, 252, 0.85);
+        border-bottom-color: rgba(226, 232, 240, 0.9);
+      }
+
+      .chips-label {
+        color: #7C3AED;
+      }
+
+      .prompt-chip {
+        background: #FFFFFF;
+        border-color: rgba(147, 51, 234, 0.25);
+        color: #475569;
+        box-shadow: 0 1px 3px rgba(15, 23, 42, 0.05);
+
+        &:hover:not(:disabled) {
+          border-color: #7C3AED;
+          background: rgba(147, 51, 234, 0.08);
+          color: #6D28D9;
+        }
+      }
+
+      .messages-scroll {
+        scrollbar-color: rgba(147, 51, 234, 0.25) transparent;
+      }
+
+      .assistant-avatar {
+        background: linear-gradient(135deg, #7C3AED, #9333EA);
+        color: #FFFFFF;
+        box-shadow: 0 4px 10px rgba(124, 58, 237, 0.3);
+      }
+
+      .user-avatar {
+        background: #0F172A;
+        color: #FFFFFF;
+        border-color: #1E293B;
+      }
+
+      .assistant-row .message-bubble {
+        background: #F8FAFC;
         border-color: #E2E8F0;
         color: #1E293B;
-        ::ng-deep strong { color: #0F172A; }
+        box-shadow: 0 2px 6px rgba(15, 23, 42, 0.04);
+
+        ::ng-deep strong {
+          color: #0F172A;
+        }
+
+        ::ng-deep a {
+          color: #7C3AED;
+          &:hover { color: #6D28D9; }
+        }
+
+        ::ng-deep code {
+          background: #F1F5F9;
+          border: 1px solid #E2E8F0;
+          color: #7C3AED;
+          padding: 0.15rem 0.35rem;
+          border-radius: 4px;
+        }
+
+        ::ng-deep pre {
+          background: #0F172A;
+          color: #F8FAFC;
+          border: 1px solid #1E293B;
+          border-radius: 8px;
+        }
+
+        ::ng-deep blockquote {
+          border-left-color: #7C3AED;
+          color: #475569;
+        }
+      }
+
+      .user-row .message-bubble {
+        background: linear-gradient(135deg, #7C3AED, #9333EA);
+        border: 1px solid rgba(124, 58, 237, 0.5);
+        color: #FFFFFF;
+        box-shadow: 0 4px 12px rgba(124, 58, 237, 0.25);
+
+        ::ng-deep strong {
+          color: #FFFFFF;
+        }
+
+        ::ng-deep a {
+          color: #F0ABFC;
+        }
+      }
+
+      .assistant-row .message-time,
+      .user-row .message-time {
+        color: #94A3B8;
+      }
+
+      .action-pill {
+        background: rgba(2, 132, 199, 0.08);
+        border-color: rgba(2, 132, 199, 0.3);
+        color: #0284C7;
+
+        &:hover {
+          background: rgba(2, 132, 199, 0.18);
+          border-color: #0284C7;
+          color: #0369A1;
+        }
+      }
+
+      .typing-bubble {
+        background: #F8FAFC;
+        border-color: #E2E8F0;
+        color: #64748B;
+      }
+
+      .typing-dot {
+        background: #7C3AED;
+      }
+
+      .error-banner {
+        background: #FEF2F2;
+        border-color: #FECACA;
+        color: #DC2626;
+      }
+
+      .btn-retry {
+        background: #DC2626;
+        color: #FFFFFF;
+        border-color: #B91C1C;
+        &:hover { background: #B91C1C; }
       }
 
       .input-container {
-        background: rgba(248, 250, 252, 0.9);
+        background: rgba(248, 250, 252, 0.95);
         border-top-color: #E2E8F0;
       }
 
       .input-wrapper {
         background: #FFFFFF;
         border-color: #CBD5E1;
+        box-shadow: 0 2px 6px rgba(15, 23, 42, 0.04);
+
+        &:focus-within {
+          border-color: #7C3AED;
+          box-shadow: 0 0 0 3px rgba(124, 58, 237, 0.15);
+        }
       }
 
-      .chat-input { color: #0F172A; }
+      .chat-input {
+        color: #0F172A;
+        &::placeholder {
+          color: #94A3B8;
+        }
+      }
+
+      .char-count {
+        color: #94A3B8;
+        &.warn { color: #D97706; }
+      }
+
+      .send-btn {
+        background: linear-gradient(135deg, #7C3AED, #9333EA);
+        color: #FFFFFF;
+
+        &:hover:not(:disabled) {
+          box-shadow: 0 4px 12px rgba(124, 58, 237, 0.35);
+        }
+      }
+
+      .input-hints {
+        color: #94A3B8;
+
+        kbd {
+          background: #F1F5F9;
+          border-color: #CBD5E1;
+          color: #475569;
+        }
+      }
     }
   `],
 })

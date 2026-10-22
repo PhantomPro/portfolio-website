@@ -61,14 +61,8 @@ interface NavLink {
             aria-label="Ask Tanmay AI Assistant"
             title="Ask Tanmay's AI Assistant"
           >
-            <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
-              <rect x="3" y="11" width="18" height="10" rx="2"/>
-              <circle cx="12" cy="5" r="2"/>
-              <path d="M12 7v4"/>
-              <line x1="8" y1="16" x2="8" y2="16"/>
-              <line x1="16" y1="16" x2="16" y2="16"/>
-            </svg>
-            <span class="ai-live-pulse" title="Gemini 3.5 Flash Online"></span>
+            <img src="assets/chatbot.png" alt="Tanmay AI" class="nav-bot-img" />
+            <span class="ai-live-pulse" title="Gemini Online"></span>
           </button>
 
           <!-- Theme toggle -->
@@ -149,7 +143,7 @@ interface NavLink {
           }
           <li class="mobile-ai-action">
             <button class="btn btn-primary mobile-ai-btn" (click)="assistantService.open(); closeMenu()">
-              <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="11" width="18" height="10" rx="2"/><circle cx="12" cy="5" r="2"/><path d="M12 7v4"/><line x1="8" y1="16" x2="8" y2="16"/><line x1="16" y1="16" x2="16" y2="16"/></svg>
+              <img src="assets/chatbot.png" alt="Tanmay AI" class="nav-bot-img-mobile" />
               <span>Ask AI Assistant</span>
               <span class="ai-chip-tag">Live</span>
             </button>
@@ -292,6 +286,17 @@ interface NavLink {
       position: relative;
       border-color: rgba(168, 85, 247, 0.4);
       color: #A855F7;
+      padding: 0;
+
+      .nav-bot-img {
+        width: 24px;
+        height: 24px;
+        border-radius: 50%;
+        object-fit: cover;
+        display: block;
+        box-shadow: 0 0 10px rgba(168, 85, 247, 0.4);
+        transition: transform 0.25s ease;
+      }
 
       &:hover, &.active {
         color: #C084FC;
@@ -299,18 +304,23 @@ interface NavLink {
         background: rgba(168, 85, 247, 0.15);
         box-shadow: 0 0 16px rgba(168, 85, 247, 0.35);
         transform: translateY(-1px);
+
+        .nav-bot-img {
+          transform: scale(1.1);
+        }
       }
 
       .ai-live-pulse {
         position: absolute;
-        top: 6px;
-        right: 6px;
+        top: 5px;
+        right: 5px;
         width: 7px;
         height: 7px;
         border-radius: 50%;
         background: #10B981;
         box-shadow: 0 0 6px #10B981;
         animation: ai-dot-pulse 2s infinite ease-in-out;
+        z-index: 2;
       }
     }
 
@@ -326,7 +336,7 @@ interface NavLink {
         display: flex;
         align-items: center;
         justify-content: center;
-        gap: 0.5rem;
+        gap: 0.6rem;
         background: linear-gradient(135deg, #7C3AED, #A855F7);
         border: none;
         border-radius: 10px;
@@ -336,13 +346,22 @@ interface NavLink {
         color: #fff;
         cursor: pointer;
 
+        .nav-bot-img-mobile {
+          width: 22px;
+          height: 22px;
+          border-radius: 50%;
+          object-fit: cover;
+          flex-shrink: 0;
+          box-shadow: 0 0 6px rgba(0, 0, 0, 0.25);
+        }
+
         .ai-chip-tag {
           font-size: 0.65rem;
           background: rgba(16, 185, 129, 0.25);
           color: #10B981;
           padding: 0.1rem 0.4rem;
           border-radius: 9999px;
-          border: 1px solid rgba(16, 185, 129, 0.4);
+          border: 1px solid rgba(168, 85, 129, 0.4);
           font-weight: 700;
           text-transform: uppercase;
         }

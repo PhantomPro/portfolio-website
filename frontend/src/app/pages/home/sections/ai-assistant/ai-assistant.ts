@@ -30,13 +30,7 @@ import { AssistantService, ChatMessage } from '../../../../core/services/assista
           <div class="terminal-header">
             <div class="header-left">
               <div class="header-robot-icon" aria-hidden="true">
-                <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                  <rect x="3" y="11" width="18" height="10" rx="2"/>
-                  <circle cx="12" cy="5" r="2"/>
-                  <path d="M12 7v4"/>
-                  <line x1="8" y1="16" x2="8" y2="16"/>
-                  <line x1="16" y1="16" x2="16" y2="16"/>
-                </svg>
+                <img src="assets/chatbot.png" alt="Tanmay AI" class="header-robot-avatar" />
               </div>
               <div class="header-title-group">
                 <h3 id="ai-chat-title" class="header-title">Ask Tanmay AI</h3>
@@ -109,7 +103,7 @@ import { AssistantService, ChatMessage } from '../../../../core/services/assista
                   aria-hidden="true"
                 >
                   @if (msg.role === 'assistant') {
-                    <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="11" width="18" height="10" rx="2"/><circle cx="12" cy="5" r="2"/><path d="M12 7v4"/><line x1="8" y1="16" x2="8" y2="16"/><line x1="16" y1="16" x2="16" y2="16"/></svg>
+                    <img src="assets/chatbot.png" alt="Tanmay AI" class="assistant-avatar-img" />
                   } @else {
                     <span>You</span>
                   }
@@ -147,7 +141,7 @@ import { AssistantService, ChatMessage } from '../../../../core/services/assista
             @if (assistantService.isLoading()) {
               <div class="message-row assistant-row">
                 <div class="avatar assistant-avatar" aria-hidden="true">
-                  <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="11" width="18" height="10" rx="2"/><circle cx="12" cy="5" r="2"/><path d="M12 7v4"/><line x1="8" y1="16" x2="8" y2="16"/><line x1="16" y1="16" x2="16" y2="16"/></svg>
+                  <img src="assets/chatbot.png" alt="Tanmay AI" class="assistant-avatar-img" />
                 </div>
                 <div class="message-bubble typing-bubble" aria-label="Tanmay is cooking">
                   <span class="typing-dot"></span>
@@ -321,7 +315,17 @@ import { AssistantService, ChatMessage } from '../../../../core/services/assista
       display: flex;
       align-items: center;
       justify-content: center;
-      color: #C084FC;
+      overflow: hidden;
+      padding: 1px;
+      flex-shrink: 0;
+
+      .header-robot-avatar {
+        width: 100%;
+        height: 100%;
+        border-radius: 7px;
+        object-fit: cover;
+        display: block;
+      }
     }
 
     .header-title-group {
@@ -547,12 +551,22 @@ import { AssistantService, ChatMessage } from '../../../../core/services/assista
       font-weight: 700;
       flex-shrink: 0;
       margin-top: 2px;
+      overflow: hidden;
     }
 
     .assistant-avatar {
       background: linear-gradient(135deg, #7C3AED, #A855F7);
       color: #FFFFFF;
       box-shadow: 0 0 10px rgba(168, 85, 247, 0.4);
+      padding: 0;
+
+      .assistant-avatar-img {
+        width: 100%;
+        height: 100%;
+        border-radius: 8px;
+        object-fit: cover;
+        display: block;
+      }
     }
 
     .user-avatar {
